@@ -1,0 +1,35 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.3em 3em;
+    background: rgb(245, 219, 223);
+    border-bottom: 3px dotted  rgb(231, 103, 124);
+    width: 90vw;
+  }
+  
+  nav {
+    height: 0px;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: space-between;
+    
+  }
+  
+  #logo-img {
+    height: 60px;
+  }
+  
+  nav a {
+    font-size: 1.5rem;
+    color: rgb(240, 14, 52);
+    font-weight: 400;
+  }
+  
+  header a {
+    padding: 0 10px;
+    text-decoration: none;
+  }
+  nav a:hover {
+    color: rgb(121, 13, 13);
+  }

@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+    color: rgb(231, 103, 124);
+    background: rgb(245, 219, 223);
+    margin: auto;
+    padding: 0;
+    overflow: auto;
+    width: 97vw;
+    font-family: 'Alkalami', serif;
+  font-family: 'Kaushan Script', cursive;
+  }
