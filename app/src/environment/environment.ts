@@ -3,7 +3,7 @@ export const environment = {
     firebase: {
       apiKey: "AIzaSyC-JAyRIrtj1LNgtUhaJTHO2QCBqLfHeuE",
   authDomain: "babyrentacar-b0505.firebaseapp.com",
-  databaseURL: "https://babyrentacar-b0505-default-rtdb.firebaseio.com",
+  databaseURL: "http://babyrentacar-b0505-default-rtdb.firebaseio.com/.json",
   projectId: "babyrentacar-b0505",
   storageBucket: "babyrentacar-b0505.appspot.com",
   messagingSenderId: "472232355864",

@@ -11,6 +11,7 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { HomeComponent } from './home/home.component';
 import { CoreModule } from './core/core.module';
 import { StrollersModule } from './strollers/strollers.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { StrollersModule } from './strollers/strollers.module';
     AngularFirestoreModule,
     AngularFireStorageModule,
     CoreModule,
-    StrollersModule
+    StrollersModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

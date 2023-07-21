@@ -1,11 +1,12 @@
-<h2>All stollers</h2>
-    <section id="dashboard">
+<h2>All strollers</h2>
+    <section *ngFor="let stroller of strollersList" id="dashboard" >
         <div class="product">
-            <img src="" />
+            <img src="{{stroller.image}}"/>
             <p class="title">
-              Lorelli
+              {{stroller.brand}}
             </p>
-            <p><strong>Price:</strong><span class="price">7</span>Euro per day</p>
+            <p>Mounth: {{stroller.mounth}}</p>
+            <p>Price:<span class="price">{{stroller.price}}</span>Euro per day</p>
             <a class="details-btn" href="">Details</a>
           </div>
     <!-- <h2>No products yet.</h2> -->
