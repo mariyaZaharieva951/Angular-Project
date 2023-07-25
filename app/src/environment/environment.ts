@@ -1,9 +1,13 @@
+
+import { initializeApp } from "firebase/app";
+import { getDatabase } from "firebase/database";
+
 export const environment = {
-    production: false,
+    production: true,
     firebase: {
       apiKey: "AIzaSyC-JAyRIrtj1LNgtUhaJTHO2QCBqLfHeuE",
   authDomain: "babyrentacar-b0505.firebaseapp.com",
-  databaseURL: "http://babyrentacar-b0505-default-rtdb.firebaseio.com/.json",
+  databaseURL: "https://babyrentacar-b0505-default-rtdb.firebaseio.com",
   projectId: "babyrentacar-b0505",
   storageBucket: "babyrentacar-b0505.appspot.com",
   messagingSenderId: "472232355864",
@@ -11,3 +15,10 @@ export const environment = {
   measurementId: "G-NFVYTKDSRT"
     }
   };
+
+  // Initialize Firebase
+const app = initializeApp(environment.firebase);
+
+
+// Initialize Realtime Database and get a reference to the service
+const database = getDatabase(app);

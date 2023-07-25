@@ -1,24 +1,30 @@
 <section id="register">
     <div class="form">
       <h2>Register</h2>
-      <form class="register-form">
+      <form #registerForm="ngForm" (ngSubmit)="register(registerForm)" class="register-form">
         <input
           type="text"
           name="email"
           id="register-email"
           placeholder="email"
+          ngModel
+          #inputEmail="ngModel"
         />
         <input
           type="password"
           name="password"
           id="register-password"
           placeholder="password"
+          ngModel
+          #inputPassword="ngModel"
         />
         <input
           type="password"
           name="re-password"
           id="repeat-password"
           placeholder="repeat password"
+          ngModel
+          #inputRePassword="ngModel"
         />
         <button type="submit">register</button>
         <p class="message">Already registered? <a href="/auth/login">Login</a></p>
