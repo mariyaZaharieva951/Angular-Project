@@ -6,15 +6,16 @@
     <nav>
       <div>
         <a routerLink="/stroller/catalog">Products</a>
-        <a routerLink="/redemption">Sell</a>
+        <!-- <a routerLink="/redemption">Sell</a> -->
       </div>
     <!-- Logged-in users -->
-      <div class="user">
+
+      <div *ngIf="isLoggedIn" class="user">
         <a routerLink="/auth/profile">My profile</a>
         <a (click)="logout()">Logout</a>
       </div>
     <!-- Guest users -->
-      <div class="guest">
+      <div *ngIf="!isLoggedIn" class="guest">
         <a routerLink="/auth/login">Login</a>
         <a routerLink="/auth/register">Register</a>
       </div>

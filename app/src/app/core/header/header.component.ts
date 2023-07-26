@@ -13,6 +13,13 @@ export class HeaderComponent {
   constructor(private authService: AuthServiceService, private router: Router) {
 
   }
+
+  get isLoggedIn(): boolean {
+    return this.authService.isLoggedIn;
+  }
+
+
+
   logout() {
 
     this.authService.logout()
