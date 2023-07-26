@@ -13,7 +13,8 @@ export class LoginComponent {
   constructor(private authService: AuthServiceService, private router: Router) {}
 
   login(form: NgForm): void {
-    console.log(form.value);
+    //debugger;
+    //console.log(form.value);
     if(form.invalid) {
       return
     }

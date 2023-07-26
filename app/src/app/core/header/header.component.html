@@ -11,7 +11,7 @@
     <!-- Logged-in users -->
       <div class="user">
         <a routerLink="/auth/profile">My profile</a>
-        <a routerLink="/auth/logout">Logout</a>
+        <a (click)="logout()">Logout</a>
       </div>
     <!-- Guest users -->
       <div class="guest">
