@@ -12,7 +12,7 @@ import { map } from 'rxjs/operators';
 })
 export class CatalogComponent implements OnInit {
   strollersList?: Stroller[];
-  currentStroller?: Stroller;
+  //currentStroller?: Stroller;
 
 
   constructor(private strollerService: StrollerServiceService){}
@@ -36,19 +36,6 @@ export class CatalogComponent implements OnInit {
   }
   
     
-     
   
-   
-   //console.log(data)
-//    .subscribe({
-//     next: (strollers) => {
-//       this.strollersList = strollers;
-//       console.log(strollers)
-//     },
-//     error: (err) => {
-//       console.error(`Error: ${err}`);
-//     }
-// })
-    
   
 }

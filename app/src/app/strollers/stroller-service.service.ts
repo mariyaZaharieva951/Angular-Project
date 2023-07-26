@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Stroller } from '../interfaces/stroller';
-import { getDatabase, ref, onValue } from "firebase/database";
 
-import { AngularFireDatabase, AngularFireList } from '@angular/fire/compat/database';
+import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/compat/database';
 
 
 
@@ -13,30 +12,23 @@ export class StrollerServiceService {
  
   private dbPath = '/data';
   strollersRef: AngularFireList<Stroller>
+  //stroller: AngularFireObject<any>
 
   constructor(public db: AngularFireDatabase) { 
-    console.log(db.list)
     this.strollersRef = db.list(this.dbPath);
+    // this.stroller = db.object('strollerId');
+    //   console.log(db.object)
   }
 
   getStrollers(): AngularFireList<Stroller> {
-    console.log('StrolersRef--->', this.strollersRef)
     return this.strollersRef;
   }
 
-  // getStrollers(query={}): Observable<Stroller[]> {
-  //   debugger
-  //   const db = getDatabase();
-  //   const starCountRef = ref(db, 'data');
-  //   console.log(starCountRef);
-  //   onValue(starCountRef, (snapshot) => {
-  //   const data = snapshot.val();
-  //  console.log(data)
-  //   });
-  //}
+  getStroller(id:string) {
+    const data = this.db.object(this.dbPath + `/${id}`);
+    return data;
+   
+  }
 
-  // getStroller() {
-  //   const {databaseURL} = environment.firebase;
-  //   return this.http.get<Stroller[]>(`${databaseURL}`)
-  // }
+
 }

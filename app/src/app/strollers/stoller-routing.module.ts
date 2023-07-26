@@ -5,14 +5,14 @@ import { StrollerComponent } from './stroller/stroller.component';
 
 const routes: Routes = [
     {
-        path: 'stoller',
+        path: 'stroller',
         children: [
           {
             path: 'catalog',
             component: CatalogComponent
           },
           {
-            path: ':stollerId',
+            path: ':strollerId',
             component: StrollerComponent
           },
         ]

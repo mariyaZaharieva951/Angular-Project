@@ -6,5 +6,5 @@ export interface Stroller {
     description?: string,
     image?: string,
     price?: string,
-    _id?: string
+    key?: string | null
   }

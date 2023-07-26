@@ -1,1 +1,17 @@
-<p>stroller works!</p>
+<section id="details" *ngIf="currentStroller">
+    <div id="details-wrapper">
+      <img id="details-img" src="{{currentStroller.image}}" />
+      <p id="details-title">Brand: {{currentStroller.brand}}</p>
+      <!-- <p id="details-category">
+        Category: <span id="categories">${product.category}</span>
+      </p> -->
+      <p id="details-price">
+        Price: <span id="price-number">{{currentStroller.price}}</span>$ per day</p>
+      <div id="info-wrapper">
+        <div id="details-description">
+          Mounth: <span id="buys">{{currentStroller.mounth}}</span> 
+          <p>Description: {{currentStroller.description}}</p>
+        </div>
+      </div>
+    </div>
+  </section>
