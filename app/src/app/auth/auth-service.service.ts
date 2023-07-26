@@ -1,5 +1,6 @@
 import { Injectable, NgZone } from '@angular/core';
 import { User } from '../interfaces/user';
+import { getDatabase, ref, push, set } from "firebase/database";
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
@@ -42,27 +43,44 @@ export class AuthServiceService {
     .catch((error) => {
       alert(error.message)
     })
-    
+    // const db = getDatabase();
+    // set(ref(db, 'users'), {
+    //   email: email,
+    //   password : password
+    // });
+    //   alert('user created')
   }
 
   register(email: string,password: string) {
+    //запазване на юзъра в базата данни
+      const db = getDatabase();
+      const userRef = ref(db, 'users');
+      const newUser = push(userRef);
+
+    
     return this.auth.createUserWithEmailAndPassword(email,password).then((result) => {
-      this.sendVerificationMail();
+      //this.sendVerificationMail();
+      //debugger
+      console.log(result.user)
       this.setUserData(result.user);
+      set(newUser, {
+        email: result.user?.email,
+        id: result.user?.uid
+      });
+      
+      this.router.navigate(['auth/login'])
     })
     .catch((error) => {
       alert(error.message)
     })
-    
-    
-    
+     
     }
 
-  sendVerificationMail() {
-    return this.auth.currentUser.then((user: any) => user.sendVerificationMail()).then(() => {
-      this.router.navigate(['verify-email-adress']);
-    })
-  }
+  // sendVerificationMail() {
+  //   return this.auth.currentUser.then((user: any) => user.sendVerificationMail()).then(() => {
+  //     this.router.navigate(['verify-email-adress']);
+  //   })
+  // }
 
   setUserData(user: any) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
