@@ -1,6 +1,6 @@
-import { Injectable, NgZone } from '@angular/core';
+import { Injectable, NgZone, OnInit } from '@angular/core';
 import { User } from '../interfaces/user';
-import { getDatabase, ref, push, set } from "firebase/database";
+import { getDatabase, ref, push, set, onValue } from "firebase/database";
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 
@@ -12,9 +12,9 @@ import { AngularFireDatabase} from '@angular/fire/compat/database';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthServiceService {
+export class AuthServiceService  {
   userdata: any;
-  currentUser: Observable<any> | null = null;
+  currentUser?: User[];
 
   constructor(public auth: AngularFireAuth, public router: Router, public ngZone: NgZone, public afdb: AngularFireDatabase) { 
     this.auth.authState.subscribe((user) => {
@@ -48,7 +48,7 @@ export class AuthServiceService {
 
 
   }
-
+  
 
 
   login(email: string,password: string) {
@@ -99,7 +99,7 @@ export class AuthServiceService {
     
     const userData: User = {
       email,
-      rent: []
+      rent: ['']
     };
     this.afdb.database
       .ref('users/' + uid)
@@ -129,15 +129,25 @@ export class AuthServiceService {
   }
 
   
+ getUserData(id: string) {
+    //console.log(this.authService.userdata)
+    const data = this.afdb.object('/users/' + id);
+    //console.log(data);
+    return data;
+    // const db = getDatabase();
+    // // const user = JSON.parse(localStorage.getItem('user')!);
+    // // const id = user.uid;
+    // const userRef = ref(db, 'users/' + id);
+    // onValue(userRef, (snapshot) => {
+    //   const data = snapshot.val();
+    //   console.log(data)
+    //   this.currentUser = data;
+    // })
+    // ;
 
-  // get userData() {
-  //   //debugger
-  //   //console.log(this.authService.userdata)
-  //   const db = getDatabase();
-  //   const user = JSON.parse(localStorage.getItem('user')!);
-  //   console.log(user);
-  //   return user;
-  // }
+    //console.log(this.currentUser)
+   //return this.currentUser
+  }
 
   rentIt() {
     const user = JSON.parse(localStorage.getItem('user')!);

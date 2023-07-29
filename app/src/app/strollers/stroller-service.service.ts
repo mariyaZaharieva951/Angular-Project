@@ -13,7 +13,7 @@ export class StrollerServiceService {
  
   private dbPathData = '/data';
   private dbPathUsers = '/users';
-  strollersRef: AngularFireList<Stroller>
+  strollersRef: AngularFireList<Stroller> //Да се провери!!!!
   //stroller: AngularFireObject<any>
 
   constructor(public db: AngularFireDatabase, private authService: AuthServiceService) { 

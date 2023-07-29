@@ -19,7 +19,7 @@ export interface Rent {
 })
 export class ProfileComponent implements OnInit{
   usersList?: User[];
-  currentUser: User | undefined;
+  currentUser: any = [];
   rentArray: Rent[] = [];
   UserData: any = [];
 
@@ -29,17 +29,32 @@ export class ProfileComponent implements OnInit{
 
 
   ngOnInit(): void {
-   
+    this.retriveUser();
+    // this.authService.getUserData()
+    // console.log('A',this.authService.getUserData())
    
   }
   get userEmail(): string {
     return this.authService.userdata?.email
   }
 
-  get userData() {
-    console.log(this.userService.userData)
-    return this.userService.userData
+  retriveUser() {
+    const id = this.activatedRoute.snapshot.params['userId'];
+    this.authService.getUserData(id).valueChanges().subscribe((val) => {
+      if(!val) {
+        return
+      }
+      this.currentUser = val;
+      //console.log(this.currentUser)
+      })
   }
+
+  // getUserData() {
+  //   //debugger
+  //   console.log('USER',this.authService.userData);
+  //   this.currentUser = this.authService.userData
+  //   return this.authService.userData
+  // }
  
   
 
