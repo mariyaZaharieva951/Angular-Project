@@ -3,9 +3,9 @@ import { User } from '../interfaces/user';
 import { getDatabase, ref, push, set } from "firebase/database";
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
-import * as auth from 'firebase/auth';
+
 import { Observable, map } from 'rxjs';
+import { AngularFireDatabase} from '@angular/fire/compat/database';
 
 
 
@@ -16,7 +16,7 @@ export class AuthServiceService {
   userdata: any;
   currentUser: Observable<any> | null = null;
 
-  constructor(public afs: AngularFirestore, public auth: AngularFireAuth, public router: Router, public ngZone: NgZone) { 
+  constructor(public auth: AngularFireAuth, public router: Router, public ngZone: NgZone, public afdb: AngularFireDatabase) { 
     this.auth.authState.subscribe((user) => {
       if(user) {
         //debugger
@@ -50,21 +50,16 @@ export class AuthServiceService {
   }
 
 
-  // getUser() {
-  //   console.log(this.currentUser)
-  //   return this.currentUser;
-  // }
-  
 
   login(email: string,password: string) {
     //debugger;
     return this.auth.signInWithEmailAndPassword(email,password).then((result) => {
       debugger
-      this.setUserData(result.user);
+      this.setUserData(result.user?.uid, result.user?.email);
       this.auth.authState.subscribe((user) => {
         if(user) {
           debugger
-          //this.currentUser = user.
+        
           this.router.navigate(['stroller/catalog'])
         }
       })
@@ -72,32 +67,22 @@ export class AuthServiceService {
     .catch((error) => {
       alert(error.message)
     })
-    // const db = getDatabase();
-    // set(ref(db, 'users'), {
-    //   email: email,
-    //   password : password
-    // });
-    //   alert('user created')
+    
   }
 
   register(email: string,password: string) {
-    //debugger
-    //запазване на юзъра в базата данни
       const db = getDatabase();
       const userRef = ref(db, 'users');
       const newUser = push(userRef);
      
-
     return this.auth.createUserWithEmailAndPassword(email,password).then((result) => {
-      //console.log(result.user)
-      this.setUserData(result.user);
+    
+      this.setUserData(result.user?.uid, result.user?.email);
       
       set(newUser, {
-        email: result.user?.email,
         uid: result.user?.uid,
-        rent: [''] 
+        email: result.user?.email 
       });
-      
       
       this.router.navigate(['stroller/catalog'])
     })
@@ -107,23 +92,26 @@ export class AuthServiceService {
      
     }
 
-  // sendVerificationMail() {
-  //   return this.auth.currentUser.then((user: any) => user.sendVerificationMail()).then(() => {
-  //     this.router.navigate(['verify-email-adress']);
-  //   })
-  // }
-
-  setUserData(user: any) {
-    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.userId}`);
+  setUserData(
+    uid: any,
+    email: any
+  ): void {
+    
     const userData: User = {
-      email: user.email,
-      uid: user.uid,
+      email,
       rent: []
     };
-    return userRef.set(userData, {
-      merge: true
-    })
+    this.afdb.database
+      .ref('users/' + uid)
+      .update(userData)
+      .then(() => {
+        console.log('User data saved!!!')
+      })
+      .catch((error) => {
+        console.error(error)
+      })
   }
+
   get userId(): string {
     const user = JSON.parse(localStorage.getItem('user')!);
     return user.uid
@@ -142,15 +130,14 @@ export class AuthServiceService {
 
   
 
-  get userData() {
-    //debugger
-    //console.log(this.authService.userdata)
-    const db = getDatabase();
-    const userRef = ref(db, 'users');
-    //const user = JSON.parse(localStorage.getItem('user')!);
-    console.log(userRef);
-    return userRef;
-  }
+  // get userData() {
+  //   //debugger
+  //   //console.log(this.authService.userdata)
+  //   const db = getDatabase();
+  //   const user = JSON.parse(localStorage.getItem('user')!);
+  //   console.log(user);
+  //   return user;
+  // }
 
   rentIt() {
     const user = JSON.parse(localStorage.getItem('user')!);

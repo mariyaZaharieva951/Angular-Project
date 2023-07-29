@@ -33,11 +33,13 @@ export class ProfileComponent implements OnInit{
    
   }
   get userEmail(): string {
-    //мога да взема UID
-    //console.log(this.authService.userdata.uid)
     return this.authService.userdata?.email
   }
 
+  get userData() {
+    console.log(this.userService.userData)
+    return this.userService.userData
+  }
  
   
 

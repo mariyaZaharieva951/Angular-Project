@@ -23,10 +23,9 @@ export class HeaderComponent implements OnInit{
     return this.authService.isLoggedIn;
   }
 
-  get userId() { //трябва да го вземе от базата!!!
-    
+  get userId() { 
     this.currentUserId = this.authService.userId
-    //console.log(this.currentUserId)
+    
     return this.authService.userId
   }
   
@@ -43,11 +42,7 @@ export class HeaderComponent implements OnInit{
 //    });
 // }
 
-  // get user() {
-  //   debugger
-  //   console.log(this.authService.getUser)
-  //   return this.authService.getUser
-  // }
+  
 
   ngOnInit(): void {
     

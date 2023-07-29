@@ -29,7 +29,7 @@ export class StrollerComponent implements OnInit {
   ngOnInit(): void {
     
   this.retriveStrollerByKey();
-  //debugger
+  
   
   this.auth.user.subscribe((user: any) => this.currentUser = user) //получаваме юзъра от auth firebase
   }
@@ -48,7 +48,7 @@ export class StrollerComponent implements OnInit {
   
 
   add(event: any): void {
-    //debugger
+    debugger
     let input = this.currentStroller || '';
     if(input !== undefined) {
       let value = input?.brand;
