@@ -31,7 +31,7 @@ export class CatalogComponent implements OnInit {
           ({key: c.payload.key, ...c.payload.val()})))
     ).subscribe(data => {
       this.strollersList = data;
-      console.log(data)
+      //console.log(data)
     });
   }
   

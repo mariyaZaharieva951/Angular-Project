@@ -2,18 +2,18 @@
     <article class="user-info">
         <!-- <img id="user-avatar-url" alt="user-profile" src="/images/female.png"> -->
         <div class="user-content">
-            <p>Username: mariya</p>
-            <p>Email:mariqtrunkova@abv.bg</p>
+            <!-- <p>Username: mariya</p> -->
+            <p>Email: {{userEmail}}</p>
         </div>
     </article>
     <!-- <h1 id="user-listings-title">User Memes</h1> -->
     <div class="user-meme-listings">
         <!-- Display : If have rent a cars --> 
         <div class="user-meme">
-            <h1>My rent cars</h1>
+            <h1>My rent stroller</h1>
             <ul>
                 <li>
-                    <p class="user-meme-title">Loreli</p>
+                    <p class="user-meme-title">{{currentUser?.rent}}</p>
                     <img class="userProfileImage" alt="meme-img" src="">
                     <a class="button" href="">Details</a>
                 </li>

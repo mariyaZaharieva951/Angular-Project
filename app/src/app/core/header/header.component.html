@@ -11,7 +11,7 @@
     <!-- Logged-in users -->
 
       <div *ngIf="isLoggedIn" class="user">
-        <a routerLink="/auth/profile">My profile</a>
+        <a routerLink="/auth/profile/{{userId}}">My profile</a>
         <a (click)="logout()">Logout</a>
       </div>
     <!-- Guest users -->

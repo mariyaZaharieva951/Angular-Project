@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Stroller } from '../interfaces/stroller';
 
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/compat/database';
+import { AuthServiceService } from '../auth/auth-service.service';
 
 
 
@@ -10,12 +11,13 @@ import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angula
 })
 export class StrollerServiceService {
  
-  private dbPath = '/data';
+  private dbPathData = '/data';
+  private dbPathUsers = '/users';
   strollersRef: AngularFireList<Stroller>
   //stroller: AngularFireObject<any>
 
-  constructor(public db: AngularFireDatabase) { 
-    this.strollersRef = db.list(this.dbPath);
+  constructor(public db: AngularFireDatabase, private authService: AuthServiceService) { 
+    this.strollersRef = db.list(this.dbPathData);
     // this.stroller = db.object('strollerId');
     //   console.log(db.object)
   }
@@ -25,10 +27,21 @@ export class StrollerServiceService {
   }
 
   getStroller(id:string) {
-    const data = this.db.object(this.dbPath + `/${id}`);
+    const data = this.db.object(this.dbPathData + `/${id}`);
+   console.log(data)
     return data;
    
   }
 
+  // rentIt() {
+  //   console.log(this.authService.userdata)
+  // }
+
+  // getUser(id: string) {
+  //   debugger
+  //   const user = this.db.object(this.dbPathUsers + `/${id}`);
+  //   console.log(user);
+  //   return user;
+  // }
 
 }

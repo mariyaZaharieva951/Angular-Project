@@ -7,10 +7,11 @@ import { RouterModule } from '@angular/router';
 
 
 
+
 @NgModule({
   declarations: [
     CatalogComponent,
-    StrollerComponent
+    StrollerComponent,
   ],
   imports: [
     CommonModule, RouterModule, StollerRoutingModule

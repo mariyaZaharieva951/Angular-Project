@@ -1,16 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { map, tap } from 'rxjs';
 import { AuthServiceService } from 'src/app/auth/auth-service.service';
+import { UserServiceService } from 'src/app/auth/user-service.service';
+import { User } from 'src/app/interfaces/user';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit{
+    currentUser: User | undefined;
+    usersList: User[];
+    currentUserId: string | null;
 
-
-  constructor(private authService: AuthServiceService, private router: Router) {
+  constructor(private authService: AuthServiceService, private router: Router, private userService: UserServiceService) {
 
   }
 
@@ -18,18 +23,45 @@ export class HeaderComponent {
     return this.authService.isLoggedIn;
   }
 
+  get userId() { //трябва да го вземе от базата!!!
+    
+    this.currentUserId = this.authService.userId
+    //console.log(this.currentUserId)
+    return this.authService.userId
+  }
+  
 
+
+//   getCurrentUserData(){
+//     return new Observable(obs => {
+//       this.db.list('/active')
+//       .filter(p => p.userID === "oiV0Q09hLbWv0nhFUeFd94aWF3f1")
+//       .valueChanges()
+//       .subscribe(res => {
+//          console.log(res)
+//      })
+//    });
+// }
+
+  // get user() {
+  //   debugger
+  //   console.log(this.authService.getUser)
+  //   return this.authService.getUser
+  // }
+
+  ngOnInit(): void {
+    
+
+   
+  } 
+
+  
+
+  
 
   logout() {
-
     this.authService.logout()
-    // .subscribe({
-    //   next: () => {
     this.router.navigate(['/auth/login']);
-    //   },
-    //   error: () => {
-    //     this.router.navigate(['/auth/login']);
-    //   },
-    // });
+    
   }
 }
