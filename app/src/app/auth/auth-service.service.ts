@@ -14,7 +14,7 @@ import { AngularFireDatabase} from '@angular/fire/compat/database';
 })
 export class AuthServiceService  {
   userdata: any;
-  currentUser?: User[];
+  //currentUser?: User[];
 
   constructor(public auth: AngularFireAuth, public router: Router, public ngZone: NgZone, public afdb: AngularFireDatabase) { 
     this.auth.authState.subscribe((user) => {
@@ -28,23 +28,6 @@ export class AuthServiceService  {
         JSON.parse(localStorage.getItem('user')!)
       }
     });
-
-    // this.auth.onAuthStateChanged(user => {
-    //   if(user) {
-    //     //debugger
-    //     this.currentUser = this.afs.doc<any>(`users/${user.uid}`).snapshotChanges().pipe(
-    //       map(actions => {
-    //         const id = actions.payload.id;
-    //         const data = actions.payload.data();
-    //         console.log(id, data)
-    //         return {id, ...data}
-    //       })
-    //     )
-    //     console.log(this.currentUser)
-    //   } else {
-    //     this.currentUser = null;
-    //   }
-    // })
 
 
   }
@@ -130,23 +113,11 @@ export class AuthServiceService  {
 
   
  getUserData(id: string) {
-    //console.log(this.authService.userdata)
+ 
     const data = this.afdb.object('/users/' + id);
     //console.log(data);
     return data;
-    // const db = getDatabase();
-    // // const user = JSON.parse(localStorage.getItem('user')!);
-    // // const id = user.uid;
-    // const userRef = ref(db, 'users/' + id);
-    // onValue(userRef, (snapshot) => {
-    //   const data = snapshot.val();
-    //   console.log(data)
-    //   this.currentUser = data;
-    // })
-    // ;
-
-    //console.log(this.currentUser)
-   //return this.currentUser
+    
   }
 
   rentIt() {

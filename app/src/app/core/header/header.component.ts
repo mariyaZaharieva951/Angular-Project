@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { map, tap } from 'rxjs';
 import { AuthServiceService } from 'src/app/auth/auth-service.service';
-import { UserServiceService } from 'src/app/auth/user-service.service';
+
 import { User } from 'src/app/interfaces/user';
 
 @Component({
@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit{
     usersList: User[];
     currentUserId: string | null;
 
-  constructor(private authService: AuthServiceService, private router: Router, private userService: UserServiceService) {
+  constructor(private authService: AuthServiceService, private router: Router) {
 
   }
 
@@ -30,29 +30,10 @@ export class HeaderComponent implements OnInit{
   }
   
 
-
-//   getCurrentUserData(){
-//     return new Observable(obs => {
-//       this.db.list('/active')
-//       .filter(p => p.userID === "oiV0Q09hLbWv0nhFUeFd94aWF3f1")
-//       .valueChanges()
-//       .subscribe(res => {
-//          console.log(res)
-//      })
-//    });
-// }
-
-  
-
   ngOnInit(): void {
     
-
-   
   } 
 
-  
-
-  
 
   logout() {
     this.authService.logout()
