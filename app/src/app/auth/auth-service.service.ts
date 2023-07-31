@@ -14,7 +14,7 @@ import { AngularFireDatabase} from '@angular/fire/compat/database';
 })
 export class AuthServiceService  {
   userdata: any;
-  //currentUser?: User[];
+  
 
   constructor(public auth: AngularFireAuth, public router: Router, public ngZone: NgZone, public afdb: AngularFireDatabase) { 
     this.auth.authState.subscribe((user) => {
@@ -35,13 +35,10 @@ export class AuthServiceService  {
 
 
   login(email: string,password: string) {
-    //debugger;
     return this.auth.signInWithEmailAndPassword(email,password).then((result) => {
-      debugger
       this.setUserData(result.user?.uid, result.user?.email);
       this.auth.authState.subscribe((user) => {
         if(user) {
-          debugger
         
           this.router.navigate(['stroller/catalog'])
         }
@@ -82,7 +79,7 @@ export class AuthServiceService  {
     
     const userData: User = {
       email,
-      rent: ['']
+      rent: Array
     };
     this.afdb.database
       .ref('users/' + uid)
@@ -95,7 +92,7 @@ export class AuthServiceService  {
       })
   }
 
-  get userId(): string {
+  get userId(): string { //юзърИд от auth
     const user = JSON.parse(localStorage.getItem('user')!);
     return user.uid
   }
@@ -112,18 +109,17 @@ export class AuthServiceService  {
   }
 
   
- getUserData(id: string) {
+ getUserData(id: string) { //юзъра от базата
  
     const data = this.afdb.object('/users/' + id);
-    //console.log(data);
     return data;
     
   }
 
-  rentIt() {
-    const user = JSON.parse(localStorage.getItem('user')!);
-    //console.log(user)
-  }
+  // rentIt() {
+  //   const user = JSON.parse(localStorage.getItem('user')!);
+  //   //console.log(user)
+  // }
 
   logout() {
     return this.auth.signOut().then(() => {

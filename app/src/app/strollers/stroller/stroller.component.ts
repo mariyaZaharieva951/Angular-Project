@@ -20,7 +20,7 @@ export interface Rent {
 })
 export class StrollerComponent implements OnInit {
   currentStroller: Stroller ;
-  currentUser: any;
+  currentUser: any = [];
   rentArray: Rent[] = [];
   userId: string
   
@@ -28,16 +28,16 @@ export class StrollerComponent implements OnInit {
   
 
   constructor(private authService:AuthServiceService,private strollerService: StrollerServiceService, private activatedRoute: ActivatedRoute, public auth: AngularFireAuth) {
-    this.auth.authState.subscribe((user) => {
-      if(user) {
-       
-        this.currentUser = user;
-        this.userId = JSON.stringify(this.currentUser.uid)
-        console.log('CURRENT', JSON.stringify(this.currentUser))
-      } else {
+    // this.auth.authState.subscribe((user) => {
+    //   debugger
+    //   if(user) {
+    //     this.currentUser = user;
+    //     this.userId = JSON.stringify(this.currentUser.uid)
+    //     console.log('CURRENT', JSON.stringify(this.currentUser))
+    //   } else {
 
-      }
-    });
+    //   }
+    // });
     }
 
 
@@ -45,11 +45,10 @@ export class StrollerComponent implements OnInit {
     
   this.retriveStrollerByKey();
   
+  this.userId = this.authService.userdata?.uid;
   
-  
-
   this.authService.getUserData(this.userId).valueChanges().subscribe((val) => {
-    debugger
+    
     if(!val) {
       return
     }
@@ -73,21 +72,35 @@ export class StrollerComponent implements OnInit {
 
 
   add(event: any): void {
-    //debugger
+    debugger
     let input = this.currentStroller || '';
     if(input !== undefined) {
       let value = input?.brand;
       if(value !== undefined) {
         
         this.currentUser?.rent?.push(value)
+        
         console.log(this.currentUser)
-        console.log(this.currentUser?.rent)
+        console.log('RENT', this.currentUser?.rent) 
         //this.rentArray.push({name: value})
         //console.log('ARRAY',this.rentArray)
       }
     }
     
   }
+
+  // updateUserData(){
+  //   var userNow = firebase.auth().currentUser;
+  //     userNow.updateProfile({
+  //     displayName: "Jane Q. User",
+  //     photoURL: "https://example.com/jane-q-user/profile.jpg"
+  //   }).then(function() {
+  //     var displayName = userNow.displayName;
+  //     var photoURL = userNow.photoURL;
+  //   }, function(error) {
+  //     console.log(error)
+  //   });
+//}
 
 
 }

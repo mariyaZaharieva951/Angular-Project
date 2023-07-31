@@ -32,8 +32,7 @@ export class ProfileComponent implements OnInit{
     return this.authService.userdata?.email
   }
 
-  retriveUser() { 
-    debugger
+  retriveUser() {  //юзъра от базата
     const id = this.activatedRoute.snapshot.params['userId'];
     this.authService.getUserData(id).valueChanges().subscribe((val) => {
       if(!val) {
