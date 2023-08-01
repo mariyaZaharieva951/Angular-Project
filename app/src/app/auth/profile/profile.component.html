@@ -8,12 +8,12 @@
         </div>
     </article>
     <!-- <h1 id="user-listings-title">User Memes</h1> -->
-    <div class="user-meme-listings">
+    <div id="details-wrapper">
         <!-- Display : If have rent a cars --> 
-        <div class="user-meme">
+        <div>
             <h1>My rent stroller</h1>
             <div *ngIf="currentUser?.rent">
-                <img class="details-img" alt="stroller-img" src="{{rentStroller?.rent[5]}}">
+                <img class="details-img" src="{{currentUser?.rent[5]}}">
                     <!-- <p class="user-meme-title"></p> -->
                 <p>{{currentUser?.rent[4]}}</p>
             </div>

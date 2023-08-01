@@ -42,11 +42,6 @@ export class ProfileComponent implements OnInit{
         return
       }
       this.currentUser = val;
-      // this.strollerService.getStroller(id).valueChanges().subscribe((val) => {
-      //   this.rentStroller = val;
-      //   console.log(this.rentStroller)
-      // })
-      console.log(this.currentUser);
       })
   }
 

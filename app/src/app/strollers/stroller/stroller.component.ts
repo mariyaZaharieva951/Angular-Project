@@ -23,24 +23,10 @@ export interface Rent {
 export class StrollerComponent implements OnInit {
   currentStroller: Stroller ;
   currentUser: any = [];
-  rentArray: Rent[] = [];
   userId: string
   
 
-  
-
-  constructor(private authService:AuthServiceService, public afdb: AngularFireDatabase, private strollerService: StrollerServiceService, private activatedRoute: ActivatedRoute, public auth: AngularFireAuth) {
-    // this.auth.authState.subscribe((user) => {
-    //   debugger
-    //   if(user) {
-    //     this.currentUser = user;
-    //     this.userId = JSON.stringify(this.currentUser.uid)
-    //     console.log('CURRENT', JSON.stringify(this.currentUser))
-    //   } else {
-
-    //   }
-    // });
-    }
+  constructor(private authService:AuthServiceService, public afdb: AngularFireDatabase, private strollerService: StrollerServiceService, private activatedRoute: ActivatedRoute, public auth: AngularFireAuth) {}
 
 
   ngOnInit(): void {
@@ -70,12 +56,11 @@ export class StrollerComponent implements OnInit {
       })
   }
 
-  
-
 
   add(event: any): void {
-    //debugger
+    debugger
     let input = this.currentStroller || '';
+  
     if(input !== undefined) {
       let value = input?.brand;
       let image = input?.image
@@ -84,26 +69,13 @@ export class StrollerComponent implements OnInit {
         this.currentUser?.rent?.push(value, image)
         
         this.afdb.database.ref('users/' + this.userId).update(this.currentUser);
-        console.log(this.currentUser)
-        console.log('RENT', this.currentUser?.rent) //Да сетна рент датата, трябва да се запазва в базата!!!
+        
+        //console.log('RENT', this.currentUser?.rent) //Да сетна рент датата, трябва да се запазва в базата!!!
         
       }
     }
     
   }
-
-  // updateUserData(){
-  //   var userNow = firebase.auth().currentUser;
-  //     userNow.updateProfile({
-  //     displayName: "Jane Q. User",
-  //     photoURL: "https://example.com/jane-q-user/profile.jpg"
-  //   }).then(function() {
-  //     var displayName = userNow.displayName;
-  //     var photoURL = userNow.photoURL;
-  //   }, function(error) {
-  //     console.log(error)
-  //   });
-//}
 
 
 }

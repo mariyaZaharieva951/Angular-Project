@@ -38,9 +38,18 @@
     background: #bd2c2c;
   }
 
-  #details-img {
+  #details-wrapper {
+    background-color: white;
+    margin: 50px auto;
+    height: 71%;
+    width: 71%;
+    border: 2px ridge rgb(210, 208, 208);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 3px 3px 0 rgba(0, 0, 0, 0.24);
+  }
+  
+  #details-wrapper img {
     display: block;
     margin: 10px auto;
     height: 30vh;
-    width: 50vh;
+    width: 40vh;
   }

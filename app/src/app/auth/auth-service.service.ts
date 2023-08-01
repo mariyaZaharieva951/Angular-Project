@@ -14,12 +14,10 @@ import { AngularFireDatabase} from '@angular/fire/compat/database';
 })
 export class AuthServiceService  {
   userdata: any;
-  
 
   constructor(public auth: AngularFireAuth, public router: Router, public ngZone: NgZone, public afdb: AngularFireDatabase) { 
     this.auth.authState.subscribe((user) => {
       if(user) {
-        //debugger
         this.userdata = user;
         localStorage.setItem('user', JSON.stringify(this.userdata));
         JSON.parse(localStorage.getItem('user')!);
@@ -92,7 +90,7 @@ export class AuthServiceService  {
       })
   }
 
-  get userId(): string { //юзърИд от auth
+  get userId(): string { //юзър от auth
     const user = JSON.parse(localStorage.getItem('user')!);
     return user.uid
   }
@@ -116,10 +114,6 @@ export class AuthServiceService  {
     
   }
 
-  // rentIt() {
-  //   const user = JSON.parse(localStorage.getItem('user')!);
-  //   //console.log(user)
-  // }
 
   logout() {
     return this.auth.signOut().then(() => {
