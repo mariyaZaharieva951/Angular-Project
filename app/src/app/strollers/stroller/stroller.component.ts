@@ -6,11 +6,13 @@ import { AuthServiceService } from 'src/app/auth/auth-service.service';
 import { User } from 'src/app/interfaces/user';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { AngularFireDatabase } from '@angular/fire/compat/database';
 
 
 
 export interface Rent {
-  name: string;
+  stroller:{ name: string;
+  image: string}
 }
 
 @Component({
@@ -27,7 +29,7 @@ export class StrollerComponent implements OnInit {
 
   
 
-  constructor(private authService:AuthServiceService,private strollerService: StrollerServiceService, private activatedRoute: ActivatedRoute, public auth: AngularFireAuth) {
+  constructor(private authService:AuthServiceService, public afdb: AngularFireDatabase, private strollerService: StrollerServiceService, private activatedRoute: ActivatedRoute, public auth: AngularFireAuth) {
     // this.auth.authState.subscribe((user) => {
     //   debugger
     //   if(user) {
@@ -72,18 +74,19 @@ export class StrollerComponent implements OnInit {
 
 
   add(event: any): void {
-    debugger
+    //debugger
     let input = this.currentStroller || '';
     if(input !== undefined) {
       let value = input?.brand;
+      let image = input?.image
       if(value !== undefined) {
         
-        this.currentUser?.rent?.push(value)
+        this.currentUser?.rent?.push(value, image)
         
+        this.afdb.database.ref('users/' + this.userId).update(this.currentUser);
         console.log(this.currentUser)
-        console.log('RENT', this.currentUser?.rent) 
-        //this.rentArray.push({name: value})
-        //console.log('ARRAY',this.rentArray)
+        console.log('RENT', this.currentUser?.rent) //Да сетна рент датата, трябва да се запазва в базата!!!
+        
       }
     }
     

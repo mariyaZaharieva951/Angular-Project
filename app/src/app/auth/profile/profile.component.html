@@ -12,13 +12,11 @@
         <!-- Display : If have rent a cars --> 
         <div class="user-meme">
             <h1>My rent stroller</h1>
-            <ul>
-                <li>
-                    <p class="user-meme-title"></p>
-                    <img class="userProfileImage" alt="meme-img" src="">
-                    <a class="button" href="">Details: {{currentUser?.rent}}</a>
-                </li>
-            </ul>
+            <div *ngIf="currentUser?.rent">
+                <img class="details-img" alt="stroller-img" src="{{rentStroller?.rent[5]}}">
+                    <!-- <p class="user-meme-title"></p> -->
+                <p>{{currentUser?.rent[4]}}</p>
+            </div>
             
         </div>
         <!-- Display : If user doesn't have own memes  --> 

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthServiceService } from '../auth-service.service';
 import { ActivatedRoute } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { StrollerServiceService } from 'src/app/strollers/stroller-service.service';
+import { Stroller } from 'src/app/interfaces/stroller';
 
 
 export interface Rent {
@@ -15,10 +17,11 @@ export interface Rent {
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit{
+  rentStroller?: any;
   currentUser: any = [];
   rentArray: Rent[] = [];
 
-  constructor(public auth: AngularFireAuth, private authService: AuthServiceService, public activatedRoute: ActivatedRoute) {
+  constructor(public auth: AngularFireAuth, private authService: AuthServiceService, public activatedRoute: ActivatedRoute, private strollerService: StrollerServiceService) {
     
   }
 
@@ -39,6 +42,10 @@ export class ProfileComponent implements OnInit{
         return
       }
       this.currentUser = val;
+      // this.strollerService.getStroller(id).valueChanges().subscribe((val) => {
+      //   this.rentStroller = val;
+      //   console.log(this.rentStroller)
+      // })
       console.log(this.currentUser);
       })
   }
