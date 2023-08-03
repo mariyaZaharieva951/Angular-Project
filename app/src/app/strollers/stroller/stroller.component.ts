@@ -11,8 +11,8 @@ import { AngularFireDatabase } from '@angular/fire/compat/database';
 
 
 export interface Rent {
-  stroller:{ name: string;
-  image: string}
+  brand: string,
+  image: string
 }
 
 @Component({
@@ -62,15 +62,18 @@ export class StrollerComponent implements OnInit {
     let input = this.currentStroller || '';
   
     if(input !== undefined) {
-      let value = input?.brand;
+      let brand = input?.brand;
       let image = input?.image
-      if(value !== undefined) {
-        
-        this.currentUser?.rent?.push(value, image)
+      if(brand !== undefined) {
+        console.log('Is empty?',this.currentUser.rent[0].brand)
+        if(this.currentUser.rent[0].brand == "") {
+          this.currentUser.rent.splice(0,1,{brand, image})
+        } 
+        this.currentUser?.rent.push({brand, image})
         
         this.afdb.database.ref('users/' + this.userId).update(this.currentUser);
         
-        //console.log('RENT', this.currentUser?.rent) //Да сетна рент датата, трябва да се запазва в базата!!!
+        console.log('RENT', this.currentUser.rent) //Да сетна рент датата, трябва да се запазва в базата!!!
         
       }
     }

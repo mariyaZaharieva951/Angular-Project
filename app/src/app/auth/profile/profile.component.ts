@@ -7,7 +7,8 @@ import { Stroller } from 'src/app/interfaces/stroller';
 
 
 export interface Rent {
-  name: string;
+  brand: string,
+  image: string
 }
 
 
@@ -19,7 +20,7 @@ export interface Rent {
 export class ProfileComponent implements OnInit{
   rentStroller?: any;
   currentUser: any = [];
-  rentArray: Rent[] = [];
+  //rentArray: Rent[] = [];
 
   constructor(public auth: AngularFireAuth, private authService: AuthServiceService, public activatedRoute: ActivatedRoute, private strollerService: StrollerServiceService) {
     

@@ -12,15 +12,18 @@
         <!-- Display : If have rent a cars --> 
         <div>
             <h1>My rent stroller</h1>
-            <div *ngIf="currentUser?.rent">
-                <img class="details-img" src="{{currentUser?.rent[5]}}">
+            <div *ngIf="currentUser?.rent.length > 0">
+                <div *ngFor="let stroller of currentUser.rent">
+                <img class="details-img" src="{{stroller.image}}">
                     <!-- <p class="user-meme-title"></p> -->
-                <p>{{currentUser?.rent[4]}}</p>
+                <p>{{stroller.brand}}</p>
+                </div>
             </div>
             
         </div>
         <!-- Display : If user doesn't have own memes  --> 
-        <p class="no-memes">No memes in database.</p>
-        
+        <div *ngIf="currentUser?.rent.length == 0">
+        <p class="no-memes">You don`t have rent stroller.</p>
+        </div>
     </div>
 </section>

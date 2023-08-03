@@ -49,6 +49,7 @@ export class AuthServiceService  {
   }
 
   register(email: string,password: string) {
+    debugger
       const db = getDatabase();
       const userRef = ref(db, 'users');
       const newUser = push(userRef);
@@ -56,11 +57,6 @@ export class AuthServiceService  {
     return this.auth.createUserWithEmailAndPassword(email,password).then((result) => {
     
       this.setUserData(result.user?.uid, result.user?.email);
-      
-      set(newUser, {
-        uid: result.user?.uid,
-        email: result.user?.email 
-      });
       
       this.router.navigate(['stroller/catalog'])
     })
@@ -73,11 +69,10 @@ export class AuthServiceService  {
   setUserData(
     uid: any,
     email: any
-  ): void {
-    
+  ): void { 
     const userData: User = {
       email,
-      rent: Array
+      rent: [{brand:"", image:""}]
     };
     this.afdb.database
       .ref('users/' + uid)
