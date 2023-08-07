@@ -1,29 +1,22 @@
 <section id="user-profile-page" class="user-profile">
     <article class="user-info">
-        <!-- <img id="user-avatar-url" alt="user-profile" src="/images/female.png"> -->
         <div class="user-content">
-            <!-- <p>Username: mariya</p> -->
-            
             <p>Email: {{currentUser?.email}}</p>
         </div>
     </article>
-    <!-- <h1 id="user-listings-title">User Memes</h1> -->
     <div id="details-wrapper">
-        <!-- Display : If have rent a cars --> 
         <div>
             <h1>My rent stroller</h1>
             <div *ngIf="isRentStroller">
-                <div *ngFor="let stroller of currentUser.rent">
+                <div *ngFor="let stroller of currentUser?.rent">
                 <a routerLink="/stroller/{{stroller.id}}">
                 <img class="details-img" src="{{stroller.image}}">
-                    <!-- <p class="user-meme-title"></p> -->
                 <p>{{stroller.brand}}</p>
                 </a>
             </div>
             </div>
             
         </div>
-        <!-- Display : If user doesn't have own memes  --> 
         <div *ngIf="!isRentStroller">
         <p class="no-memes">You don`t have rent stroller.</p>
         </div>

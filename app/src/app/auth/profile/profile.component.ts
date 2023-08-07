@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { StrollerServiceService } from 'src/app/strollers/stroller-service.service';
 import { Stroller } from 'src/app/interfaces/stroller';
+import { User } from 'src/app/interfaces/user';
 
 
 export interface Rent {
@@ -19,10 +20,9 @@ export interface Rent {
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit{
-  rentStroller?: any;
-  currentUser: any = [];
+  rentStroller?: Stroller;
+  currentUser?: User;
   isRentStroller = false;
-  //rentArray: Rent[] = [];
 
   constructor(public auth: AngularFireAuth, private authService: AuthServiceService, public activatedRoute: ActivatedRoute, private strollerService: StrollerServiceService) {
     
@@ -39,14 +39,15 @@ export class ProfileComponent implements OnInit{
   }
 
 
-  retriveUser() {  //юзъра от базата
+  retriveUser() {  
     const id = this.activatedRoute.snapshot.params['userId'];
     this.authService.getUserData(id).valueChanges().subscribe((val) => {
       if(!val) {
         return
       }
       this.currentUser = val;
-      if(this.currentUser.rent[0].brand !== '') {
+      
+      if(this.currentUser.rent && this.currentUser.rent[0].brand !== '') {
         this.isRentStroller = true;
       }
       })

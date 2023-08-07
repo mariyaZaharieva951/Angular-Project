@@ -3,9 +3,7 @@ import { StrollerServiceService } from '../stroller-service.service';
 import { Stroller } from 'src/app/interfaces/stroller';
 import { ActivatedRoute } from '@angular/router';
 import { AuthServiceService } from 'src/app/auth/auth-service.service';
-import { User } from 'src/app/interfaces/user';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 
 
@@ -58,7 +56,7 @@ export class StrollerComponent implements OnInit {
 
 
   add(event: any): void {
-    let input = this.currentStroller || '';
+    let input = this.currentStroller;
   
     if(input !== undefined) {
       let brand = input?.brand;
@@ -68,6 +66,11 @@ export class StrollerComponent implements OnInit {
         if(this.currentUser.rent[0].brand == "") {
           this.currentUser.rent.splice(0,1,{brand, image, id})
         } else {
+          let rentStroller = this.currentUser.rent.find(({id}: any) => id == id);
+          if(rentStroller) {
+            alert('This stroller is alredy rent for you!')
+            return;
+          }
           this.currentUser?.rent.push({brand, image, id})
         }
         

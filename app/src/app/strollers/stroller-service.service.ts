@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Stroller } from '../interfaces/stroller';
-
-import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/compat/database';
+import { AngularFireDatabase, AngularFireList} from '@angular/fire/compat/database';
 import { AuthServiceService } from '../auth/auth-service.service';
 
 
@@ -12,10 +11,9 @@ import { AuthServiceService } from '../auth/auth-service.service';
 export class StrollerServiceService {
  
   private dbPathData = '/data';
-  private dbPathUsers = '/users';
   strollersRef: AngularFireList<Stroller> //Да се провери!!!!
 
-  constructor(public db: AngularFireDatabase, private authService: AuthServiceService) { 
+  constructor(public db: AngularFireDatabase) { 
     this.strollersRef = db.list(this.dbPathData);
   }
 

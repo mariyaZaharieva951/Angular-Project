@@ -1,10 +1,7 @@
-import { Injectable, NgZone, OnInit } from '@angular/core';
+import { Injectable, NgZone, } from '@angular/core';
 import { User } from '../interfaces/user';
-import { getDatabase, ref, push, set, onValue } from "firebase/database";
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
-
-import { Observable, map } from 'rxjs';
 import { AngularFireDatabase} from '@angular/fire/compat/database';
 
 
@@ -34,10 +31,9 @@ export class AuthServiceService  {
 
   login(email: string,password: string) {
     return this.auth.signInWithEmailAndPassword(email,password).then((result) => {
-      this.setUserData(result.user?.uid, result.user?.email);
+      //this.setUserData(result.user?.uid, result.user?.email);
       this.auth.authState.subscribe((user) => {
         if(user) {
-        
           this.router.navigate(['stroller/catalog'])
         }
       })
@@ -49,9 +45,6 @@ export class AuthServiceService  {
   }
 
   register(email: string,password: string) {
-      const db = getDatabase();
-      const userRef = ref(db, 'users');
-      const newUser = push(userRef);
      
     return this.auth.createUserWithEmailAndPassword(email,password).then((result) => {
     
@@ -77,14 +70,14 @@ export class AuthServiceService  {
       .ref('users/' + uid)
       .update(userData)
       .then(() => {
-        console.log('User data saved!!!')
+        console.log('User data saved!')
       })
       .catch((error) => {
         console.error(error)
       })
   }
 
-  get userId(): string { //юзър от auth
+  get userId(): string { 
     const user = JSON.parse(localStorage.getItem('user')!);
     return user.uid
   }
