@@ -35,7 +35,6 @@ export class StrollerComponent implements OnInit {
   this.userId = this.authService.userdata?.uid;
   
   this.authService.getUserData(this.userId).valueChanges().subscribe((val) => {
-    
     if(!val) {
       return
     }
@@ -61,16 +60,19 @@ export class StrollerComponent implements OnInit {
     if(input !== undefined) {
       let brand = input?.brand;
       let image = input?.image
-      let id = this.strollerId
+      let idS = this.strollerId
+      //debugger
       if(brand !== undefined) {
         if(this.currentUser.rent[0].brand == "") {
+          let id = idS;
           this.currentUser.rent.splice(0,1,{brand, image, id})
         } else {
-          let rentStroller = this.currentUser.rent.find(({id}: any) => id == id);
+          let rentStroller = this.currentUser.rent.find(({id}: any) => id === idS);
           if(rentStroller) {
             alert('This stroller is alredy rent for you!')
             return;
           }
+          let id = idS;
           this.currentUser?.rent.push({brand, image, id})
         }
         
