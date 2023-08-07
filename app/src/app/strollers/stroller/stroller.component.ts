@@ -23,7 +23,8 @@ export interface Rent {
 export class StrollerComponent implements OnInit {
   currentStroller: Stroller ;
   currentUser: any = [];
-  userId: string
+  userId: string;
+  strollerId: string;
   
 
   constructor(private authService:AuthServiceService, public afdb: AngularFireDatabase, private strollerService: StrollerServiceService, private activatedRoute: ActivatedRoute, public auth: AngularFireAuth) {}
@@ -41,14 +42,13 @@ export class StrollerComponent implements OnInit {
       return
     }
     this.currentUser = val;
-    console.log('user',this.currentUser)
     })
   }
   
    retriveStrollerByKey() {
-    const id = this.activatedRoute.snapshot.params['strollerId'];
+    this.strollerId = this.activatedRoute.snapshot.params['strollerId'];
     
-    this.strollerService.getStroller(id).valueChanges().subscribe((val) => {
+    this.strollerService.getStroller(this.strollerId).valueChanges().subscribe((val) => {
       if(!val) {
         return
       }
@@ -58,22 +58,20 @@ export class StrollerComponent implements OnInit {
 
 
   add(event: any): void {
-    debugger
     let input = this.currentStroller || '';
   
     if(input !== undefined) {
       let brand = input?.brand;
       let image = input?.image
+      let id = this.strollerId
       if(brand !== undefined) {
-        console.log('Is empty?',this.currentUser.rent[0].brand)
         if(this.currentUser.rent[0].brand == "") {
-          this.currentUser.rent.splice(0,1,{brand, image})
-        } 
-        this.currentUser?.rent.push({brand, image})
+          this.currentUser.rent.splice(0,1,{brand, image, id})
+        } else {
+          this.currentUser?.rent.push({brand, image, id})
+        }
         
         this.afdb.database.ref('users/' + this.userId).update(this.currentUser);
-        
-        console.log('RENT', this.currentUser.rent) //Да сетна рент датата, трябва да се запазва в базата!!!
         
       }
     }

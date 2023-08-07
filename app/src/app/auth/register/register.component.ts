@@ -15,7 +15,6 @@ export class RegisterComponent {
   constructor(private authService: AuthServiceService, private router: Router) {}
 
   register(form: NgForm): void {
-    //console.log(form.value)
     if(form.invalid) {
       return
     }

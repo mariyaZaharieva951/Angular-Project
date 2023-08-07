@@ -8,7 +8,8 @@ import { Stroller } from 'src/app/interfaces/stroller';
 
 export interface Rent {
   brand: string,
-  image: string
+  image: string,
+  id: string
 }
 
 
@@ -20,6 +21,7 @@ export interface Rent {
 export class ProfileComponent implements OnInit{
   rentStroller?: any;
   currentUser: any = [];
+  isRentStroller = false;
   //rentArray: Rent[] = [];
 
   constructor(public auth: AngularFireAuth, private authService: AuthServiceService, public activatedRoute: ActivatedRoute, private strollerService: StrollerServiceService) {
@@ -36,6 +38,7 @@ export class ProfileComponent implements OnInit{
     return this.authService.userdata?.email
   }
 
+
   retriveUser() {  //юзъра от базата
     const id = this.activatedRoute.snapshot.params['userId'];
     this.authService.getUserData(id).valueChanges().subscribe((val) => {
@@ -43,6 +46,9 @@ export class ProfileComponent implements OnInit{
         return
       }
       this.currentUser = val;
+      if(this.currentUser.rent[0].brand !== '') {
+        this.isRentStroller = true;
+      }
       })
   }
 

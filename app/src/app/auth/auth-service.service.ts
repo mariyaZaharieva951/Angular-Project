@@ -49,7 +49,6 @@ export class AuthServiceService  {
   }
 
   register(email: string,password: string) {
-    debugger
       const db = getDatabase();
       const userRef = ref(db, 'users');
       const newUser = push(userRef);
@@ -72,7 +71,7 @@ export class AuthServiceService  {
   ): void { 
     const userData: User = {
       email,
-      rent: [{brand:"", image:""}]
+      rent: [{brand:"", image:"", id: ""}]
     };
     this.afdb.database
       .ref('users/' + uid)
@@ -92,7 +91,6 @@ export class AuthServiceService  {
   
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user')!);
-    //console.log(user)
     if(user){
       return true
     } else {
