@@ -9,8 +9,18 @@
           placeholder="email"
           ngModel
           #inputEmail="ngModel"
+          email
           required
-        />
+        />    
+        <div *ngIf="inputEmail.invalid && (inputEmail.dirty || inputEmail.touched)" class="alert">
+          <div *ngIf="inputEmail.errors?.['required']">
+              <p>Email is required</p>
+          </div>
+          <div *ngIf="inputEmail.errors?.['email']">
+              <p>This doesn't seem like a real email</p>
+          </div>
+      </div>
+
         <input
           type="password"
           name="password"
@@ -19,7 +29,21 @@
           ngModel
           #inputPassword="ngModel"
           required
+          minlength="6" 
+          maxlength="25"
         />
+        <div *ngIf="inputPassword.invalid && (inputPassword.dirty || inputPassword.touched)" class="alert">
+          <div *ngIf="inputPassword.errors?.['required']">
+              <p>Password is required</p>
+          </div>
+          <div *ngIf="inputPassword.errors?.['minlength']">
+              <p>Password should be at least 6 characters long</p>
+          </div>
+          <div *ngIf="inputPassword.errors?.['maxlength']">
+              <p>Password should be no more than 25 characters long</p>
+          </div>
+      </div>
+
         <input
           type="password"
           name="re-password"
@@ -28,7 +52,17 @@
           ngModel
           #inputRePassword="ngModel"
           required
-        />
+          pattern="{{inputPassword.value}}"
+          />
+        <div *ngIf="inputRePassword.invalid && (inputPassword.dirty || inputPassword.touched)" class="alert">
+              <div *ngIf="inputRePassword.errors?.['required']">
+                  <p>Repeat password is required</p>
+              </div>
+              <div *ngIf="inputRePassword.errors?.['pattern']">
+                  <p>Password and repeat password don't match</p>
+              </div>
+        </div>
+
         <button type="submit">register</button>
         <p class="message">Already registered? <a routerLink="/auth/login">Login</a></p>
       </form>
