@@ -11,8 +11,13 @@
         <div id="details-description">
           Mounth: <span id="buys">{{currentStroller.mounth}}</span> 
           <p>Description: {{currentStroller.description}}</p>
-          <a *ngIf="currentUser" class="rent-btn" (click)="add($event)" routerLink="/auth/profile/{{userId}}">Rent it</a>
-          <p *ngIf="!currentUser">If you want to rent stroller <a routerLink="/auth/login">Login</a></p>
+          <div *ngIf="currentUser">
+            <a class="rent-btn" (click)="add($event)" routerLink="/auth/profile/{{userId}}">Rent it</a>
+          </div>
+          <div *ngIf="!currentUser">
+            <p>If you want to rent stroller <a routerLink="/auth/login">Login</a></p>
+          </div>
+          
         </div>
       </div>
     </div>

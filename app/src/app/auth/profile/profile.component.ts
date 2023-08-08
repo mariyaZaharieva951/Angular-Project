@@ -8,8 +8,8 @@ import { User } from 'src/app/interfaces/user';
 
 
 export interface Rent {
-  brand: string,
-  image: string,
+  brand?: string,
+  image?: string,
   id: string
 }
 
@@ -22,7 +22,7 @@ export interface Rent {
 export class ProfileComponent implements OnInit{
   rentStroller?: Stroller;
   currentUser?: User;
-  isRentStroller = false;
+  isRentStroller: boolean = false;
 
   constructor(public auth: AngularFireAuth, private authService: AuthServiceService, public activatedRoute: ActivatedRoute, private strollerService: StrollerServiceService) {
     

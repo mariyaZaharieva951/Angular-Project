@@ -5,12 +5,14 @@ import { ActivatedRoute } from '@angular/router';
 import { AuthServiceService } from 'src/app/auth/auth-service.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
+import { User } from 'src/app/interfaces/user';
 
 
 
 export interface Rent {
   brand: string,
-  image: string
+  image: string,
+  id: string
 }
 
 @Component({
@@ -20,7 +22,7 @@ export interface Rent {
 })
 export class StrollerComponent implements OnInit {
   currentStroller: Stroller ;
-  currentUser: any = [];
+  currentUser: User;
   userId: string;
   strollerId: string;
   
@@ -29,11 +31,11 @@ export class StrollerComponent implements OnInit {
 
 
   ngOnInit(): void {
-    
+    //debugger
   this.retriveStrollerByKey();
   
   this.userId = this.authService.userdata?.uid;
-  
+  console.log(this.currentUser)
   this.authService.getUserData(this.userId).valueChanges().subscribe((val) => {
     if(!val) {
       return
@@ -62,7 +64,7 @@ export class StrollerComponent implements OnInit {
       let image = input?.image
       let idS = this.strollerId
       //debugger
-      if(brand !== undefined) {
+      if(this.currentUser.rent){
         if(this.currentUser.rent[0].brand == "") {
           let id = idS;
           this.currentUser.rent.splice(0,1,{brand, image, id})
@@ -75,10 +77,12 @@ export class StrollerComponent implements OnInit {
           let id = idS;
           this.currentUser?.rent.push({brand, image, id})
         }
+      }
+        
         
         this.afdb.database.ref('users/' + this.userId).update(this.currentUser);
         
-      }
+      
     }
     
   }
