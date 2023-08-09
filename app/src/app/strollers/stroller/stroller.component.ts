@@ -29,19 +29,24 @@ export class StrollerComponent implements OnInit {
 
   constructor(private authService:AuthServiceService, public afdb: AngularFireDatabase, private strollerService: StrollerServiceService, private activatedRoute: ActivatedRoute, public auth: AngularFireAuth) {}
 
+  get isLoggedIn(): boolean {
+    return this.authService.isLoggedIn;
+  }
 
   ngOnInit(): void {
     //debugger
   this.retriveStrollerByKey();
   
   this.userId = this.authService.userdata?.uid;
-  console.log(this.currentUser)
-  this.authService.getUserData(this.userId).valueChanges().subscribe((val) => {
-    if(!val) {
-      return
-    }
-    this.currentUser = val;
-    })
+  
+ 
+  // this.authService.getUserData(this.userId).valueChanges().subscribe((val) => {
+  //   if(!val) {
+  //     return
+  //   }
+  //   this.currentUser = val;
+  //   console.log('User',this.currentUser)
+  //   })
   }
   
    retriveStrollerByKey() {
