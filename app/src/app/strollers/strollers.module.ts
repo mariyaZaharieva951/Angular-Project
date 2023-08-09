@@ -4,6 +4,7 @@ import { CatalogComponent } from './catalog/catalog.component';
 import { StrollerComponent } from './stroller/stroller.component';
 import { StollerRoutingModule } from './stoller-routing.module';
 import { RouterModule } from '@angular/router';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -14,7 +15,7 @@ import { RouterModule } from '@angular/router';
     StrollerComponent,
   ],
   imports: [
-    CommonModule, RouterModule, StollerRoutingModule
+    CommonModule, RouterModule, StollerRoutingModule, SharedModule
   ]
 })
 export class StrollersModule { }

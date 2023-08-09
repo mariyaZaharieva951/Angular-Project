@@ -1,4 +1,5 @@
 <section id="user-profile-page" class="user-profile">
+    <app-loader *ngIf="!currentUser"></app-loader>
     <article class="user-info">
         <div class="user-content">
             <p>Email: {{currentUser?.email}}</p>
