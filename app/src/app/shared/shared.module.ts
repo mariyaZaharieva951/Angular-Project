@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RouterModule } from '@angular/router';
-import { LoaderComponent } from './loader/loader/loader.component';
+import { LoaderComponent } from './loader/loader.component';
+
 
 
 
@@ -13,11 +14,13 @@ import { LoaderComponent } from './loader/loader/loader.component';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    
   ],
   exports: [
     PageNotFoundComponent, 
-    LoaderComponent
+    LoaderComponent,
+    
   ]
 })
 export class SharedModule { }
