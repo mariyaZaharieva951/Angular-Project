@@ -54,7 +54,7 @@
           required
           pattern="{{inputPassword.value}}"
           />
-        <div *ngIf="inputRePassword.invalid && (inputPassword.dirty || inputPassword.touched)" class="alert">
+        <div *ngIf="inputRePassword.invalid && inputPassword.dirty" class="alert">
               <div *ngIf="inputRePassword.errors?.['required']">
                   <p>Repeat password is required</p>
               </div>

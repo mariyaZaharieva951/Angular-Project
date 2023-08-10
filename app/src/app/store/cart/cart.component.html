@@ -1,6 +1,7 @@
 <section id="details">
 <h2>Shopping Cart</h2>
 <div *ngIf="haveItems">
+<app-loader *ngIf="!items"></app-loader>
 <div id="details-wrapper" *ngFor="let item of items; let i = index">
   <div id="details-description">
   <p id="details-title">Barnd: {{item?.brand}}</p>
