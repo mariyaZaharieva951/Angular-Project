@@ -3,6 +3,7 @@
       ><img id="logo-img" src="../../../assets/image/collection-baby-carriage-cliparts-6.png" alt=""
     /></a>
 
+    
     <nav>
       <div>
         <a routerLink="/stroller/catalog">Products</a>
@@ -13,7 +14,12 @@
       <div *ngIf="isLoggedIn" class="user">
         <a routerLink="/auth/profile/{{userId}}">My profile</a>
         <a (click)="logout()">Logout</a>
+        <app-cart-bar></app-cart-bar>
+        
       </div>
+      
+        
+      
     <!-- Guest users -->
       <div *ngIf="!isLoggedIn" class="guest">
         <a routerLink="/auth/login">Login</a>
@@ -21,4 +27,6 @@
       </div>
     
     </nav>
+    
 </header>
+

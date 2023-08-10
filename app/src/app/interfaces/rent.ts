@@ -1,4 +1,5 @@
 export interface Rent {
-    stroller: { name: string;
-    image: string}
+  brand?: string,
+  image?: string,
+  id: string
   }

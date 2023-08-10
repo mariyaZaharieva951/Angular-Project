@@ -1,0 +1,24 @@
+<section id="details">
+<h2>Shopping Cart</h2>
+<div *ngIf="haveItems">
+<div id="details-wrapper" *ngFor="let item of items; let i = index">
+  <div id="details-description">
+  <p id="details-title">Barnd: {{item?.brand}}</p>
+  <img id="details-img" src="{{item?.image}}"/>
+  <p id="details-price">Price: {{item?.price | currency}}</p>
+  <p>
+    <a class="rent-btn" routerLink="/stroller/catalog">Continue shopping</a>
+  </p>
+ 
+  <a class="rent-btn" (click)="rent(item)" routerLink="/auth/profile/{{userId}}">Rent it</a>
+  <a class="rent-btn" (click)="removeItem(item)" routerLink="/cart">Remove it</a>
+  </div>
+</div>
+</div>
+
+<div id="details-description" *ngIf="!haveItems"><h2>Your shopping cart is empty!</h2>
+<div id="rentBtn">
+<a class="rent-btn" routerLink="/stroller/catalog">Continue</a>
+</div>
+</div>
+</section>

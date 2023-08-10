@@ -1,4 +1,4 @@
-import { Injectable, NgZone, } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { User } from '../interfaces/user';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
@@ -12,7 +12,7 @@ import { AngularFireDatabase} from '@angular/fire/compat/database';
 export class AuthServiceService  {
   userdata: any;
 
-  constructor(public auth: AngularFireAuth, public router: Router, public ngZone: NgZone, public afdb: AngularFireDatabase) { 
+  constructor(public auth: AngularFireAuth, public router: Router, public afdb: AngularFireDatabase) { 
     this.auth.authState.subscribe((user) => {
       if(user) {
         this.userdata = user;
@@ -59,9 +59,11 @@ export class AuthServiceService  {
     }
 
   setUserData(
+    
     uid: any,
     email: any
   ): void { 
+    debugger
     const userData: User = {
       email,
       rent: [{brand:"", image:"", id: ""}]
@@ -93,17 +95,16 @@ export class AuthServiceService  {
   }
 
   
- getUserData(id: string) { //юзъра от базата
- 
+ getUserData(id: string) {
     const data = this.afdb.object('/users/' + id);
     return data;
-    
   }
 
 
   logout() {
     return this.auth.signOut().then(() => {
       localStorage.removeItem('user');
+      localStorage.removeItem('cart_items')
       this.router.navigate([''])
     })
   }

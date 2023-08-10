@@ -1,4 +1,4 @@
-import { Rent } from "../auth/profile/profile.component";
+import { Rent } from "./rent";
 
 export interface User {
     uid?: string,

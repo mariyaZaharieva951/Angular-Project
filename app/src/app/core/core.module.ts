@@ -4,17 +4,19 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { AuthModule } from '../auth/auth.module';
+import { CartBarComponent } from './cart-bar/cart-bar.component';
 
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    CartBarComponent
   ],
   imports: [
     CommonModule, RouterModule, AuthModule
   ],
-  exports: [HeaderComponent, FooterComponent]
+  exports: [HeaderComponent, FooterComponent, CartBarComponent]
 })
 export class CoreModule { }

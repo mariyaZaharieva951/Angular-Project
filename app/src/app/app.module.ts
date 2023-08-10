@@ -13,6 +13,7 @@ import { CoreModule } from './core/core.module';
 import { StrollersModule } from './strollers/strollers.module';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
+import { StoreModule } from './store/store.module';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { SharedModule } from './shared/shared.module';
     CoreModule,
     StrollersModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
+    StoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

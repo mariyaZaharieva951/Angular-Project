@@ -3,17 +3,15 @@ import { StrollerServiceService } from '../stroller-service.service';
 import { Stroller } from 'src/app/interfaces/stroller';
 import { ActivatedRoute } from '@angular/router';
 import { AuthServiceService } from 'src/app/auth/auth-service.service';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { AngularFireDatabase } from '@angular/fire/compat/database';
-import { User } from 'src/app/interfaces/user';
+import { CartService } from 'src/app/store/cart.service';
 
 
 
-export interface Rent {
-  brand: string,
-  image: string,
-  id: string
-}
+// export interface Rent {
+//   brand: string,
+//   image: string,
+//   id: string
+// }
 
 @Component({
   selector: 'app-stroller',
@@ -21,32 +19,22 @@ export interface Rent {
   styleUrls: ['./stroller.component.css']
 })
 export class StrollerComponent implements OnInit {
-  currentStroller: Stroller ;
-  currentUser: User;
-  userId: string;
+  items: any[] = [];
+  currentStroller: Stroller;
   strollerId: string;
   
 
-  constructor(private authService:AuthServiceService, public afdb: AngularFireDatabase, private strollerService: StrollerServiceService, private activatedRoute: ActivatedRoute, public auth: AngularFireAuth) {}
+  constructor(private authService:AuthServiceService, private strollerService: StrollerServiceService, private activatedRoute: ActivatedRoute, private cartService: CartService) {}
 
   get isLoggedIn(): boolean {
     return this.authService.isLoggedIn;
   }
 
+  
   ngOnInit(): void {
-    //debugger
+
   this.retriveStrollerByKey();
   
-  this.userId = this.authService.userdata?.uid;
-  
- 
-  // this.authService.getUserData(this.userId).valueChanges().subscribe((val) => {
-  //   if(!val) {
-  //     return
-  //   }
-  //   this.currentUser = val;
-  //   console.log('User',this.currentUser)
-  //   })
   }
   
    retriveStrollerByKey() {
@@ -60,39 +48,16 @@ export class StrollerComponent implements OnInit {
       })
   }
 
-
-  add(event: any): void {
-    let input = this.currentStroller;
-  
-    if(input !== undefined) {
-      let brand = input?.brand;
-      let image = input?.image
-      let idS = this.strollerId
-      //debugger
-      if(this.currentUser.rent){
-        if(this.currentUser.rent[0].brand == "") {
-          let id = idS;
-          this.currentUser.rent.splice(0,1,{brand, image, id})
-        } else {
-          let rentStroller = this.currentUser.rent.find(({id}: any) => id === idS);
-          if(rentStroller) {
-            alert('This stroller is alredy rent for you!')
-            return;
-          }
-          let id = idS;
-          this.currentUser?.rent.push({brand, image, id})
-        }
-      }
-        
-        
-        this.afdb.database.ref('users/' + this.userId).update(this.currentUser);
-        
-      
+  addToCart(product: Stroller): void {
+    if(this.cartService.productInCart(product)) {
+      window.alert('This product alredy in your shipping cart!');
+      return
     }
-    
+    this.cartService.addToCart(product);
+    window.alert('Your product has been added to the cart!');
   }
 
-
+  
 }
 
 

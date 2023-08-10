@@ -3,9 +3,6 @@
     <div id="details-wrapper">
       <img id="details-img" src="{{currentStroller.image}}" />
       <p id="details-title">Brand: {{currentStroller.brand}}</p>
-      <!-- <p id="details-category">
-        Category: <span id="categories">${product.category}</span>
-      </p> -->
       <p id="details-price">
         Price: <span id="price-number">{{currentStroller.price}}</span>$ per day</p>
       <div id="info-wrapper">
@@ -13,7 +10,10 @@
           Mounth: <span id="buys">{{currentStroller.mounth}}</span> 
           <p>Description: {{currentStroller.description}}</p>
           <div *ngIf="isLoggedIn">
-            <a class="rent-btn" (click)="add($event)" routerLink="/auth/profile/{{userId}}">Rent it</a>
+            <a class="rent-btn" (click)="addToCart(currentStroller)" routerLink="/cart">Add to cart</a>
+            <p>
+            <a class="rent-btn" routerLink="/stroller/catalog">Cancel</a>
+          </p>
           </div>
           <div *ngIf="!isLoggedIn">
             <p>If you want to rent stroller <a routerLink="/auth/login">Login</a></p>

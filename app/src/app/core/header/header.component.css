@@ -5,14 +5,15 @@ header {
     padding: 0.3em 3em;
     background: rgb(245, 219, 223);
     border-bottom: 3px dotted  rgb(231, 103, 124);
-    width: 90vw;
+    width: 91vw;
   }
   
   nav {
     height: 0px;
-    margin-bottom: 40px;
+    margin-bottom: 46px;
     display: flex;
-    justify-content: space-between;
+    
+    /* justify-content: space-between; */
     
   }
   

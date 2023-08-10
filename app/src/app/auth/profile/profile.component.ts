@@ -7,11 +7,11 @@ import { Stroller } from 'src/app/interfaces/stroller';
 import { User } from 'src/app/interfaces/user';
 
 
-export interface Rent {
-  brand?: string,
-  image?: string,
-  id: string
-}
+// export interface Rent {
+//   brand?: string,
+//   image?: string,
+//   id: string
+// }
 
 
 @Component({
@@ -20,13 +20,10 @@ export interface Rent {
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit{
-  rentStroller?: Stroller;
   currentUser?: User;
-  isRentStroller: boolean = false;
+  haveRentStroller: boolean = false;
 
-  constructor(public auth: AngularFireAuth, private authService: AuthServiceService, public activatedRoute: ActivatedRoute, private strollerService: StrollerServiceService) {
-    
-  }
+  constructor(private authService: AuthServiceService, public activatedRoute: ActivatedRoute) {}
 
 
   ngOnInit(): void {
@@ -48,15 +45,9 @@ export class ProfileComponent implements OnInit{
       this.currentUser = val;
       
       if(this.currentUser.rent && this.currentUser.rent[0].brand !== '') {
-        this.isRentStroller = true;
+        this.haveRentStroller = true;
       }
       })
   }
 
-  
- 
-  
-
- 
-  
 }

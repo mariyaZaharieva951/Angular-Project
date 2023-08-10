@@ -1,0 +1,24 @@
+nav {
+  height: 0px;
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 32px;
+  
+}
+
+#logo-img {
+  height: 30px;
+}
+
+nav a {
+  font-size: 1.5rem;
+  color: rgb(240, 14, 52);
+  font-weight: 400;
+}
+
+#cart {
+  margin-top: -7px;
+  text-decoration: none;
+  
+}
