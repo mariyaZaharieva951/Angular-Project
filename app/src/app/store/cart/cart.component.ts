@@ -21,7 +21,7 @@ export class CartComponent implements OnInit {
   userId: string;
   strollerId: string;
 
-  constructor(public afdb: AngularFireDatabase,private cartService: CartService, private authService: AuthServiceService, private strollerService: StrollerServiceService, private activatedRoute: ActivatedRoute) { }
+  constructor(public afdb: AngularFireDatabase,private cartService: CartService, private authService: AuthServiceService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.userId = this.authService.userdata?.uid;
