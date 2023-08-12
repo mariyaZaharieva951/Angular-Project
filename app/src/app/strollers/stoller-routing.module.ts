@@ -16,7 +16,7 @@ const routes: Routes = [
           {
             path: ':strollerId',
             component: StrollerComponent,
-            //canActivate: [AuthActivate]
+            canActivate: [AuthActivate]
           },
         ]
     },
@@ -26,8 +26,5 @@ const routes: Routes = [
   
 ];
 
-// @NgModule({
-//   imports: [RouterModule.forChild(routes)],
-//   exports: [RouterModule]
-// })
+
 export const StollerRoutingModule = RouterModule.forChild(routes)

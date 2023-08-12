@@ -13,7 +13,6 @@ export class AuthActivate implements CanActivate {
   constructor(private authService: AuthServiceService) {}
 
   canActivate(
-    
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ):

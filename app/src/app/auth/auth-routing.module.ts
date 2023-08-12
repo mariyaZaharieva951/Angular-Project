@@ -6,6 +6,7 @@ import { RegisterComponent } from './register/register.component';
 import { AuthActivate } from '../shared/guard/guard.guard';
 
 
+
 const routes: Routes = [
     {
         path: 'auth',
@@ -22,7 +23,8 @@ const routes: Routes = [
             path: 'profile/:userId',
             component: ProfileComponent,
             canActivate: [AuthActivate]
-          }
+          },
+          
         ]
     }
   

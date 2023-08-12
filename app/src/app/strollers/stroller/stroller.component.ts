@@ -7,12 +7,6 @@ import { CartService } from 'src/app/store/cart.service';
 
 
 
-// export interface Rent {
-//   brand: string,
-//   image: string,
-//   id: string
-// }
-
 @Component({
   selector: 'app-stroller',
   templateUrl: './stroller.component.html',

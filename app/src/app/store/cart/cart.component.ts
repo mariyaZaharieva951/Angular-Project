@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from '../cart.service';
 import { User } from 'src/app/interfaces/user';
 import { AuthServiceService } from 'src/app/auth/auth-service.service';
-import { StrollerServiceService } from 'src/app/strollers/stroller-service.service';
 import { ActivatedRoute } from '@angular/router';
 import { Stroller } from 'src/app/interfaces/stroller';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
@@ -21,7 +20,7 @@ export class CartComponent implements OnInit {
   userId: string;
   strollerId: string;
 
-  constructor(public afdb: AngularFireDatabase,private cartService: CartService, private authService: AuthServiceService, private activatedRoute: ActivatedRoute) { }
+  constructor(public afdb: AngularFireDatabase,private cartService: CartService, private authService: AuthServiceService) { }
 
   ngOnInit(): void {
     this.userId = this.authService.userdata?.uid;

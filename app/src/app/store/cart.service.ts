@@ -45,15 +45,5 @@ export class CartService {
 
   }
 
-  // clearCart() {
-  //   localStorage.clear();
-  //   this.items = [];
-  //   return this.items;
-  // }
 
-  // getData() { 
-  //   const data = this.afdb.object('/data');
-  //   return data;
-    
-  // }
 }

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthServiceService } from '../auth-service.service';
-import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,7 +11,7 @@ import { Router } from '@angular/router';
 export class RegisterComponent {
 
 
-  constructor(private authService: AuthServiceService, private router: Router) {}
+  constructor(private authService: AuthServiceService) {}
 
   register(form: NgForm): void {
     if(form.invalid) {

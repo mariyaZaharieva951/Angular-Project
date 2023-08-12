@@ -1,17 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthServiceService } from '../auth-service.service';
 import { ActivatedRoute } from '@angular/router';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { StrollerServiceService } from 'src/app/strollers/stroller-service.service';
-import { Stroller } from 'src/app/interfaces/stroller';
 import { User } from 'src/app/interfaces/user';
 
-
-// export interface Rent {
-//   brand?: string,
-//   image?: string,
-//   id: string
-// }
 
 
 @Component({

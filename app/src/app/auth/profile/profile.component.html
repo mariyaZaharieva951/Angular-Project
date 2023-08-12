@@ -7,16 +7,13 @@
     </article>
     <div id="details-wrapper">
         <div>
-            <h1>My rent stroller</h1>
+            <h1>My rent strollers</h1>
             <div *ngIf="haveRentStroller">
                 <div *ngFor="let stroller of currentUser?.rent">
-                <!-- <a routerLink="/stroller/{{stroller.id}}"> -->
                 <img class="details-img" src="{{stroller.image}}">
                 <p>{{stroller.brand}}</p>
-                <!-- </a> -->
             </div>
             </div>
-            
         </div>
         <div *ngIf="!haveRentStroller">
         <p class="no-memes">You don`t have rent stroller.</p>

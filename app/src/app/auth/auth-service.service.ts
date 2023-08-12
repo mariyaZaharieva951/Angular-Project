@@ -31,7 +31,6 @@ export class AuthServiceService  {
 
   login(email: string,password: string) {
     return this.auth.signInWithEmailAndPassword(email,password).then((result) => {
-      //this.setUserData(result.user?.uid, result.user?.email);
       this.auth.authState.subscribe((user) => {
         if(user) {
           this.router.navigate(['stroller/catalog'])
