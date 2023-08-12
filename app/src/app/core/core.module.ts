@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
-import { AuthModule } from '../auth/auth.module';
 import { CartBarComponent } from './cart-bar/cart-bar.component';
 
 
@@ -15,7 +14,7 @@ import { CartBarComponent } from './cart-bar/cart-bar.component';
     CartBarComponent
   ],
   imports: [
-    CommonModule, RouterModule, AuthModule
+    CommonModule, RouterModule
   ],
   exports: [HeaderComponent, FooterComponent, CartBarComponent]
 })

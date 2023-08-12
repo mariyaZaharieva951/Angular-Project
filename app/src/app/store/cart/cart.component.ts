@@ -24,7 +24,6 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     this.userId = this.authService.userdata?.uid;
-    console.log(this.userId)
 
     this.authService.getUserData(this.userId).valueChanges().subscribe((val) => {
       if(!val) {
@@ -43,7 +42,6 @@ export class CartComponent implements OnInit {
 
   rent(product: any): void {
     this.currentStroller = product
-    console.log(this.currentStroller)
     
     let input = this.currentStroller;
   
@@ -55,8 +53,7 @@ export class CartComponent implements OnInit {
       if(this.currentUser.rent){
         if(this.currentUser.rent[0].brand == "") {
           let id = idS;
-          if(id)
-          this.currentUser.rent.splice(0,1,{brand, image, id})
+            this.currentUser.rent.splice(0,1,{brand, image, id})
         } else {
           let rentStroller = this.currentUser.rent.find(({id}: any) => id === idS);
           if(rentStroller) {
@@ -64,7 +61,6 @@ export class CartComponent implements OnInit {
             return;
           }
           let id = idS;
-          if(id)
           this.currentUser?.rent.push({brand, image, id})
         }
       }
