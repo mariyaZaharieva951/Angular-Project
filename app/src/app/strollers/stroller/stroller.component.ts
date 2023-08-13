@@ -14,7 +14,7 @@ import { CartService } from 'src/app/store/cart.service';
 })
 export class StrollerComponent implements OnInit {
   items: any[] = [];
-  currentStroller: Stroller;
+  currentStroller: Stroller | any;
   strollerId: string;
   
 

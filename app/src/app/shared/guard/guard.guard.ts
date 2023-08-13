@@ -21,6 +21,8 @@ export class AuthActivate implements CanActivate {
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree> {
       
+      if(!this.authService.isLoggedIn){
+      alert('Only for register users')}
     return this.authService.isLoggedIn;
   }
 }

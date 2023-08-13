@@ -16,7 +16,7 @@ export class CartComponent implements OnInit {
   haveItems: boolean;
 
   currentStroller: Stroller;
-  currentUser: User;
+  currentUser: User | any;
   userId: string;
   strollerId: string;
 

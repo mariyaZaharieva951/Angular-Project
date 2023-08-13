@@ -1,5 +1,5 @@
 export interface Rent {
-  brand?: string,
-  image?: string,
+  brand: string,
+  image: string,
   id?: string
   }

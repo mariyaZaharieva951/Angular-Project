@@ -10,7 +10,7 @@
           Mounth: <span id="buys">{{currentStroller.mounth}}</span> 
           <p>Description: {{currentStroller.description}}</p>
           <div *ngIf="isLoggedIn">
-            <a class="rent-btn" (click)="addToCart(currentStroller)" routerLink="/cart">Add to cart</a>
+            <a class="rent-btn" (click)="addToCart(currentStroller)" routerLink="/stroller/catalog">Add to cart</a>
             <p>
             <a class="rent-btn" routerLink="/stroller/catalog">Cancel</a>
           </p>

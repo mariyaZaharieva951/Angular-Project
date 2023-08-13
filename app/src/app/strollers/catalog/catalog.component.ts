@@ -11,7 +11,7 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./catalog.component.css']
 })
 export class CatalogComponent implements OnInit {
-  strollersList?: Stroller[];
+  strollersList: Stroller[] | any;
 
 
   constructor(private strollerService: StrollerServiceService){}

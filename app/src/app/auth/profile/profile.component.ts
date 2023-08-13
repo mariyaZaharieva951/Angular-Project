@@ -11,7 +11,7 @@ import { User } from 'src/app/interfaces/user';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit{
-  currentUser?: User;
+  currentUser: User | any;
   haveRentStroller: boolean = false;
 
   constructor(private authService: AuthServiceService, public activatedRoute: ActivatedRoute) {}
