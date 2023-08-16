@@ -15,6 +15,7 @@ import { StrollersModule } from './strollers/strollers.module';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 import { StoreModule } from './store/store.module';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -33,7 +34,9 @@ import { StoreModule } from './store/store.module';
     StrollersModule,
     HttpClientModule,
     SharedModule,
-    StoreModule
+    StoreModule,
+    RouterModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
