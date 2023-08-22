@@ -1,8 +1,8 @@
 
 <form class="search">
     <div class="form-group">
-        <input type="text" name="search" id="search" placeholder="Search Stroller">
-        <button class="search-btn">
+        <input type="text" name="search" id="search" placeholder="Search Stroller" #filter>
+        <button class="search-btn" (click)="search(filter.value)">
             <img class="search-img" src="../../../assets/image/search-icon.png">
         </button>
     </div>

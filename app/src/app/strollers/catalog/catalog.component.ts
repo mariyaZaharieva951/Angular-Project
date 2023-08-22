@@ -12,9 +12,11 @@ import { map } from 'rxjs/operators';
 })
 export class CatalogComponent implements OnInit {
   strollersList: Stroller[] | any;
+  filteredList: Stroller[] = [];
 
+  constructor(private strollerService: StrollerServiceService){
 
-  constructor(private strollerService: StrollerServiceService){}
+  }
   
     
   ngOnInit(): void {
@@ -29,6 +31,7 @@ export class CatalogComponent implements OnInit {
           ({key: c.payload.key, ...c.payload.val()})))
     ).subscribe(data => {
       this.strollersList = data;
+      this.filteredList = this.strollersList;
     });
   }
   
