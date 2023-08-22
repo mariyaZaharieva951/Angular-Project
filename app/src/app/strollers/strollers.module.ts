@@ -5,6 +5,7 @@ import { StrollerComponent } from './stroller/stroller.component';
 import { StollerRoutingModule } from './stoller-routing.module';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
+import { CoreModule } from '../core/core.module';
 
 
 
@@ -15,7 +16,7 @@ import { SharedModule } from '../shared/shared.module';
     StrollerComponent,
   ],
   imports: [
-    CommonModule, RouterModule, StollerRoutingModule, SharedModule
+    CommonModule, RouterModule, StollerRoutingModule, SharedModule,CoreModule
   ]
 })
 export class StrollersModule { }

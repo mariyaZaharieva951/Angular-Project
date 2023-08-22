@@ -4,6 +4,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { CartBarComponent } from './cart-bar/cart-bar.component';
+import { SearchComponent } from './search/search.component';
 
 
 
@@ -11,11 +12,12 @@ import { CartBarComponent } from './cart-bar/cart-bar.component';
   declarations: [
     HeaderComponent,
     FooterComponent,
-    CartBarComponent
+    CartBarComponent,
+    SearchComponent
   ],
   imports: [
     CommonModule, RouterModule
   ],
-  exports: [HeaderComponent, FooterComponent, CartBarComponent]
+  exports: [HeaderComponent, FooterComponent, CartBarComponent, SearchComponent]
 })
 export class CoreModule { }
