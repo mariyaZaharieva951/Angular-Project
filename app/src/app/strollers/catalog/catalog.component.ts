@@ -12,28 +12,51 @@ import { map } from 'rxjs/operators';
 })
 export class CatalogComponent implements OnInit {
   strollersList: Stroller[] | any;
+  list: Stroller[] = [];
   filteredList: Stroller[] = [];
+  searchText: any;
 
   constructor(private strollerService: StrollerServiceService){
 
   }
-  
+
+
+
     
   ngOnInit(): void {
     this.retriveStrollers();
-
+    
   }
 
   retriveStrollers(): void {
+    
     this.strollerService.getStrollers().snapshotChanges().pipe(
       map(changes => 
         changes.map(c => 
           ({key: c.payload.key, ...c.payload.val()})))
     ).subscribe(data => {
       this.strollersList = data;
-      this.filteredList = this.strollersList;
+      //console.log(this.strollersList)
+      this.list = this.strollersList;
+      console.log('Filtered',this.filteredList)
     });
   }
+
+  search(text: string): void {
+    debugger
+    if(!text) {
+      this.list = this.strollersList;
+      }
+    
+     this.filteredList = this.list.filter(
+        query => query?.brand.toLowerCase().includes(text.toLowerCase())
+      );
+      console.log('Filtered Search',this.filteredList)
+}
+
+  
+
+  
   
     
   

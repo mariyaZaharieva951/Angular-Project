@@ -16,7 +16,7 @@ import { CoreModule } from '../core/core.module';
     StrollerComponent,
   ],
   imports: [
-    CommonModule, RouterModule, StollerRoutingModule, SharedModule,CoreModule
+    CommonModule, RouterModule, StollerRoutingModule, SharedModule, CoreModule
   ]
 })
 export class StrollersModule { }

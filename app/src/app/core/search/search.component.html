@@ -1,9 +1,29 @@
-
+<!-- <section>
 <form class="search">
     <div class="form-group">
         <input type="text" name="search" id="search" placeholder="Search Stroller" #filter>
-        <button class="search-btn" (click)="search(filter.value)">
+        <button class="search-btn" (click)="search(filter.value)" routerLink="/search">
             <img class="search-img" src="../../../assets/image/search-icon.png">
         </button>
     </div>
 </form>
+</section> -->
+
+<!-- <div *ngIf="filteredList.length<=0">Not matches</div>
+<div *ngIf="filteredList.length>0"> -->
+<section  class="search">
+      <!-- [stroller]="stroller" -->
+      <div class="product">
+        <img src="{{stroller.image}}"/>
+        <p class="title">
+          {{stroller.brand}}
+        </p>
+        <p>Mounth: {{stroller.mounth}}</p>
+        <p>Price:<span class="price">{{stroller.price}}</span>Euro per day</p>
+        <!-- <a class="details-btn" routerLink="/stroller/{{stroller?.key}}">Details</a> -->
+      </div> 
+      </section>
+<!-- </div> -->
+    
+
+
