@@ -14,7 +14,6 @@ export class CatalogComponent implements OnInit {
   strollersList: Stroller[] | any;
   list: Stroller[] = [];
   filteredList: Stroller[] = [];
-  searchText: any;
 
   constructor(private strollerService: StrollerServiceService){
 
@@ -38,7 +37,7 @@ export class CatalogComponent implements OnInit {
       this.strollersList = data;
       //console.log(this.strollersList)
       this.list = this.strollersList;
-      console.log('Filtered',this.filteredList)
+      console.log('Filtered',this.list)
     });
   }
 

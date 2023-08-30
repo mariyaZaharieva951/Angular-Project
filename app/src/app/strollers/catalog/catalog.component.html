@@ -1,5 +1,5 @@
 <h2>All strollers</h2>
-<section>
+<!-- <section>
   <form class="search">
       <div class="form-group">
           <input type="text" name="search" id="search" placeholder="Search Stroller" #filter>
@@ -8,21 +8,21 @@
           </button>
       </div>
   </form>
-  </section>
-
-    <section *ngIf="filteredList.length > 0">
+  </section> -->
+<app-search></app-search>
+    <!-- <section *ngIf="filteredList.length >= 0">
     <app-search
     *ngFor="let stroller of filteredList"
     [stroller]="stroller"
     >
     </app-search>
-    </section>
+    </section> -->
 
 
     <app-loader *ngIf="!strollersList"></app-loader>
 
 
-    <section *ngIf="filteredList.length <= 0">
+    <!-- <section *ngIf="filteredList.length < 0"> -->
     <section *ngFor="let stroller of strollersList" id="dashboard" >
         <div class="product">
             <img src="{{stroller.image}}"/>
@@ -34,5 +34,6 @@
             <a class="details-btn" routerLink="/stroller/{{stroller?.key}}">Details</a>
           </div> 
     </section>
-  </section>
+  <!-- </section> -->
+
     

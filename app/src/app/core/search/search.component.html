@@ -1,18 +1,17 @@
-<!-- <section>
+<section>
 <form class="search">
     <div class="form-group">
         <input type="text" name="search" id="search" placeholder="Search Stroller" #filter>
-        <button class="search-btn" (click)="search(filter.value)" routerLink="/search">
+        <button class="search-btn" (click)="search(filter.value)" >
             <img class="search-img" src="../../../assets/image/search-icon.png">
         </button>
     </div>
 </form>
-</section> -->
+</section>
 
 <!-- <div *ngIf="filteredList.length<=0">Not matches</div>
 <div *ngIf="filteredList.length>0"> -->
-<section  class="search">
-      <!-- [stroller]="stroller" -->
+<section  class="search" *ngFor="let stroller of filteredList">
       <div class="product">
         <img src="{{stroller.image}}"/>
         <p class="title">
