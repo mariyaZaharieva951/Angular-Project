@@ -24,6 +24,7 @@ export class ForgotPasswordComponent {
     }
 
     const email = this.forgotPasswordForm.value.email;
+    console.log(email)
     //TODO: handle forgot-password request
 
     formDirevtive.resetForm();
