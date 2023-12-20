@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 
 
@@ -16,7 +17,8 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    ResetPasswordComponent
   ],
   imports: [
     CommonModule, AuthRoutingModule, FormsModule, RouterModule, SharedModule, ReactiveFormsModule

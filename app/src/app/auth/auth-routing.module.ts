@@ -5,6 +5,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthActivate } from '../shared/guard/guard.guard';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 
 
@@ -28,6 +29,10 @@ const routes: Routes = [
           {
             path: 'forgot-password',
             component: ForgotPasswordComponent
+          },
+          {
+            path: 'reset-password',
+            component: ResetPasswordComponent
           },
           
         ]
