@@ -5,8 +5,9 @@ import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AuthRoutingModule } from './auth-routing.module';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 
 
@@ -14,10 +15,11 @@ import { SharedModule } from '../shared/shared.module';
   declarations: [
     LoginComponent,
     RegisterComponent,
-    ProfileComponent
+    ProfileComponent,
+    ForgotPasswordComponent
   ],
   imports: [
-    CommonModule, AuthRoutingModule, FormsModule, RouterModule, SharedModule
+    CommonModule, AuthRoutingModule, FormsModule, RouterModule, SharedModule, ReactiveFormsModule
   ],
   
 })
