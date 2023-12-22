@@ -22,12 +22,15 @@ export class ResetPasswordComponent {
         // validators: [ matchPasswordsValidator('newPassword', 'confirmPassword')]
       });
       
+      
 
       this.route.queryParams.subscribe(params => {
         this.token = params['token'];
       });
     }
 
+      
+    
     onSubmit(formDirevtive: FormGroupDirective): void {
       console.log(this.resetPasswordForm)
       if(this.resetPasswordForm.invalid) {
