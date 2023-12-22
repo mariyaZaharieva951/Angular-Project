@@ -99,6 +99,14 @@ export class AuthServiceService  {
     return data;
   }
 
+  sendPasswordResetEmail(email: string): Promise<void> {
+    return this.auth.sendPasswordResetEmail(email);
+  }
+
+  confirmPasswordResetEmail(token: string, newPass: string): Promise<void> {
+    return this.auth.confirmPasswordReset(token, newPass);
+  }
+
 
   logout() {
     return this.auth.signOut().then(() => {
