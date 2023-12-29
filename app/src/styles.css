@@ -7,4 +7,5 @@ body {
     width: 97vw;
     font-family: 'Alkalami', serif;
   font-family: 'Kaushan Script', cursive;
+  overflow-x: hidden;
   }
