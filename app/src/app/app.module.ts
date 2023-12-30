@@ -12,10 +12,16 @@ import { HomeComponent } from './home/home.component';
 import { AuthModule } from './auth/auth.module';
 import { CoreModule } from './core/core.module';
 import { StrollersModule } from './strollers/strollers.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 import { StoreModule } from './store/store.module';
 import { RouterModule } from '@angular/router';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 
 @NgModule({
@@ -35,7 +41,15 @@ import { RouterModule } from '@angular/router';
     HttpClientModule,
     SharedModule,
     StoreModule,
-    RouterModule
+    RouterModule,
+    TranslateModule.forRoot({
+      defaultLanguage: 'en', // Език по подразбиране
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
     
   ],
   providers: [],

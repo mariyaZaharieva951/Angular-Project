@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { map, tap } from 'rxjs';
 import { AuthServiceService } from 'src/app/auth/auth-service.service';
-
+import { TranslateService } from '@ngx-translate/core';
 import { User } from 'src/app/interfaces/user';
 
 @Component({
@@ -15,8 +15,13 @@ export class HeaderComponent implements OnInit{
     usersList: User[];
     currentUserId: string | null;
 
-  constructor(private authService: AuthServiceService, private router: Router) {
+  constructor(private authService: AuthServiceService, private router: Router, public translate: TranslateService) {
+    this.translate.addLangs(['en', 'bg']);
+    this.translate.setDefaultLang('en');
+  }
 
+  switchLang(lang: string) {
+    this.translate.use(lang);
   }
 
   get isLoggedIn(): boolean {
