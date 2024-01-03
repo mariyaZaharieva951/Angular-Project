@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit{
     currentUserId: string | null;
 
   constructor(private authService: AuthServiceService, private router: Router, public translate: TranslateService) {
-    this.translate.addLangs(['en', 'bg']);
+    this.translate.addLangs(['en', 'bg','de']);
     this.translate.setDefaultLang('en');
   }
 
