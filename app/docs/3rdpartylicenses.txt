@@ -84,6 +84,12 @@ Apache-2.0
 @firebase/util
 Apache-2.0
 
+@ngx-translate/core
+SEE LICENSE IN LICENSE
+
+@ngx-translate/http-loader
+SEE LICENSE IN LICENSE
+
 firebase/analytics
 
 firebase/app

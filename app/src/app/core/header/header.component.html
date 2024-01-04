@@ -18,7 +18,9 @@
       </span>
       </div>
       <div>
-        <a routerLink="/stroller/catalog">Products</a>
+        <a routerLink="/stroller/catalog">{{translatedText}}</a>
+        <p>{{ translatedText }}</p>
+<button (click)="translateTo('bg')">Translate to French</button>
       </div>
 
       <div *ngIf="isLoggedIn" class="user">

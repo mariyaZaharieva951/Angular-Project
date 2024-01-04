@@ -4,6 +4,7 @@ import { map, tap } from 'rxjs';
 import { AuthServiceService } from 'src/app/auth/auth-service.service';
 import { TranslateService } from '@ngx-translate/core';
 import { User } from 'src/app/interfaces/user';
+import { TranslationService } from 'src/app/translation.service';
 
 @Component({
   selector: 'app-header',
@@ -15,9 +16,23 @@ export class HeaderComponent implements OnInit{
     usersList: User[];
     currentUserId: string | null;
 
-  constructor(private authService: AuthServiceService, private router: Router, public translate: TranslateService) {
+    translatedText: string = '';
+    originalText: string = 'Products';
+
+  constructor(private translationService: TranslationService,private authService: AuthServiceService, private router: Router, public translate: TranslateService) {
     this.translate.addLangs(['en', 'bg','de']);
     this.translate.setDefaultLang('en');
+  }
+
+  translateTo(targetLanguage: string) {
+    debugger
+    this.translationService.translateText(this.originalText, targetLanguage)
+      .subscribe((response: any) => {
+        console.log(response)
+        this.translatedText = response[0].translations[0].text;
+      }, (error: any) => {
+        console.error('Translation failed:', error);
+      });
   }
 
   switchLang(lang: string) {
@@ -45,4 +60,6 @@ export class HeaderComponent implements OnInit{
     this.router.navigate(['/auth/login']);
     
   }
+
+  
 }
