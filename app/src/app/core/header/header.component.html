@@ -18,20 +18,18 @@
       </span>
       </div>
       <div>
-        <a routerLink="/stroller/catalog">{{translatedText}}</a>
-        <p>{{ translatedText }}</p>
-<button (click)="translateTo('bg')">Translate to French</button>
+        <a routerLink="/stroller/catalog">{{'products' | translate}}</a>
       </div>
 
       <div *ngIf="isLoggedIn" class="user">
-        <a routerLink="/auth/profile/{{userId}}">My profile</a>
-        <a (click)="logout()">Logout</a>
+        <a routerLink="/auth/profile/{{userId}}">{{'profile' | translate}}</a>
+        <a (click)="logout()">{{'logout' | translate}}</a>
         <app-cart-bar></app-cart-bar> 
       </div>
     
       <div *ngIf="!isLoggedIn" class="guest">
-        <a routerLink="/auth/login">Login</a>
-        <a routerLink="/auth/register">Register</a>
+        <a routerLink="/auth/login">{{'login' | translate}}</a>
+        <a routerLink="/auth/register">{{'register' | translate}}</a>
       </div>
     </nav> 
     

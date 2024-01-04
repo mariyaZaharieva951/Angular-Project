@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class TranslationService {
   private baseUrl = 'https://babyrentacar-b0505.cognitiveservices.azure.com/';
   private apiKey = '6f3a832fb3624dcfac55658d8f75f309';
-  private region = 'westeurope'
+  // private region = 'westeurope'
 
   constructor(private http: HttpClient) {}
 
@@ -16,7 +16,6 @@ export class TranslationService {
     const headers = new HttpHeaders()
       .set('Content-Type', 'application/json')
       .set('Ocp-Apim-Subscription-Key', this.apiKey)
-      .set('Ocp-Apim-Subscription-Region',this.region);
     const body = [{
       text: text
     }];
