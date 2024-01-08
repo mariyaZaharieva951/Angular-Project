@@ -22,6 +22,11 @@ export class HeaderComponent implements OnInit{
   constructor(private translationService: TranslationService,private authService: AuthServiceService, private router: Router, public translate: TranslateService) {
     this.translate.addLangs(['en', 'bg','de']);
     this.translate.setDefaultLang('en');
+  
+    const saveLang = localStorage.getItem('selectedLang');
+    if(saveLang) {
+      this.translate.use(saveLang)
+    }
   }
 
   translateTo(targetLanguage: string) {
@@ -37,6 +42,8 @@ export class HeaderComponent implements OnInit{
 
   switchLang(lang: string) {
     this.translate.use(lang);
+
+    localStorage.setItem('selectedLang', lang)
   }
 
   get isLoggedIn(): boolean {
@@ -51,7 +58,7 @@ export class HeaderComponent implements OnInit{
   
 
   ngOnInit(): void {
-    
+
   } 
 
 
