@@ -9,7 +9,7 @@ import { AngularFireDatabase, AngularFireList} from '@angular/fire/compat/databa
   providedIn: 'root'
 })
 export class StrollerServiceService {
- 
+
   private dbPathData = '/data';
   strollersRef: AngularFireList<Stroller> 
 

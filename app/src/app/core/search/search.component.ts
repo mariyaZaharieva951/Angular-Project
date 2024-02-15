@@ -10,9 +10,8 @@ import { StrollerServiceService } from 'src/app/strollers/stroller-service.servi
 })
 export class SearchComponent {
   strollersList: Stroller[] | any;
-  list: Stroller[] = [];
+  fullStrollersList: Stroller[] | any;
   filteredList: Stroller[] = [];
-  //@Input() stroller!: Stroller;
   
 
    constructor(public strollerService: StrollerServiceService) {}
@@ -22,31 +21,19 @@ export class SearchComponent {
     this.retriveStrollers();
 }
 
-  retriveStrollers(): void {
-    //debugger
-    this.strollerService.getStrollers().snapshotChanges().pipe(
-      map(changes => 
-        changes.map(c => 
-          ({key: c.payload.key, ...c.payload.val()})))
-    ).subscribe(data => {
-      this.strollersList = data;
-      this.list = this.strollersList;
-    });
-  }
-  
-  search(text: string): void {
-    debugger
-    if(!text) {
-      this.list = this.strollersList;
-      }
-      if(this.strollersList){
-      
-    }
-    
-     this.filteredList = this.list.filter(
-        query => query?.brand.toLowerCase().includes(text.toLowerCase())
-      );
-      console.log(this.filteredList)
+retriveStrollers(): void {
+  this.strollerService.getStrollers().valueChanges().subscribe((data: Stroller[]) => {
+    this.strollersList = data;
+    this.fullStrollersList = this.strollersList;
+  });
 }
 
+search(text: string): void {
+  if(!text) {
+    this.filteredList = this.fullStrollersList;
+  } else {
+    this.filteredList = this.fullStrollersList.filter((query: Stroller) => query?.brand.toLowerCase().includes(text.toLowerCase()));
+  }
+  console.log(this.filteredList);
+}
 }

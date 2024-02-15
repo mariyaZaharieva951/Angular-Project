@@ -11,17 +11,15 @@
 
 <!-- <div *ngIf="filteredList.length<=0">Not matches</div>
 <div *ngIf="filteredList.length>0"> -->
-<section  class="search" *ngFor="let stroller of filteredList">
-      <div class="product">
-        <img src="{{stroller.image}}"/>
-        <p class="title">
-          {{stroller.brand}}
-        </p>
-        <p>Mounth: {{stroller.mounth}}</p>
-        <p>Price:<span class="price">{{stroller.price}}</span>Euro per day</p>
-        <!-- <a class="details-btn" routerLink="/stroller/{{stroller?.key}}">Details</a> -->
-      </div> 
-      </section>
+  <section *ngFor="let stroller of filteredList || fullStrollersList" id="dashboard">
+    <div class="product">
+      <img src="{{stroller.image}}"/>
+      <p class="title">{{stroller.brand | translate}}</p>
+      <p>Mounth: {{stroller.mounth}}</p>
+      <p>Price:<span class="price">{{stroller.price}}</span>Euro per day</p>
+      <a class="details-btn" routerLink="/stroller/{{stroller?.key}}">Details</a>
+    </div> 
+  </section>
 <!-- </div> -->
     
 

@@ -19,41 +19,19 @@ export class CatalogComponent implements OnInit {
 
   }
 
-
-
-    
   ngOnInit(): void {
-    this.retriveStrollers();
-    
-  }
 
-  retriveStrollers(): void {
+    this.strollerService.getStrollers().valueChanges().subscribe((strollers: Stroller[]) => {
+      this.strollersList = strollers;
+      
+      this.filteredList = [...this.strollersList];
+   
     
-    this.strollerService.getStrollers().snapshotChanges().pipe(
-      map(changes => 
-        changes.map(c => 
-          ({key: c.payload.key, ...c.payload.val()})))
-    ).subscribe(data => {
-      this.strollersList = data;
-      //console.log(this.strollersList)
-      this.list = this.strollersList;
-      console.log('Filtered',this.list)
-    });
-  }
+  });
 
-  search(text: string): void {
-    debugger
-    if(!text) {
-      this.list = this.strollersList;
-      }
-    
-     this.filteredList = this.list.filter(
-        query => query?.brand.toLowerCase().includes(text.toLowerCase())
-      );
-      console.log('Filtered Search',this.filteredList)
+
+
 }
-
-  
 
   
   
