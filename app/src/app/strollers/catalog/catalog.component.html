@@ -1,31 +1,43 @@
 <h2>All strollers</h2>
-<!-- <section>
+
+<section>
   <form class="search">
       <div class="form-group">
-          <input type="text" name="search" id="search" placeholder="Search Stroller" #filter>
-          <button class="search-btn" (click)="search(filter.value)" routerLink="/search">
+          <input type="text" name="search" id="search" placeholder="Search Stroller" [(ngModel)]="searchText">
+          <button class="search-btn" (click)="search()" >
               <img class="search-img" src="../../../assets/image/search-icon.png">
           </button>
       </div>
   </form>
-  </section> -->
-<app-search></app-search>
 
     <app-loader *ngIf="!strollersList"></app-loader>
 
-
-    <!-- <section *ngIf="filteredList.length < 0"> -->
-    <section *ngFor="let stroller of strollersList" id="dashboard" >
-        <div class="product">
+    <!-- <div *ngIf="strollersList"> -->
+      <!-- <div *ngIf="filteredList.length > 0"> -->
+        <section *ngFor="let stroller of filteredList" id="dashboard">
+          <div class="product">
             <img src="{{stroller.image}}"/>
             <p class="title">
               {{stroller.brand | translate}}
             </p>
             <p>Mounth: {{stroller.mounth}}</p>
             <p>Price:<span class="price">{{stroller.price}}</span>Euro per day</p>
-            <a class="details-btn" routerLink="/stroller/{{stroller?.key}}">Details</a>
+            <a class="details-btn" routerLink="/stroller/{{stroller?.id}}">Details</a>
           </div> 
-    </section>
-  <!-- </section> -->
-
+        </section>
+      <!-- </div> -->
+      <!-- <div *ngIf="filteredList.length === 0">
+        <section *ngFor="let stroller of fullStrollersList" id="dashboard">
+          <div class="product">
+            <img src="{{stroller.image}}"/>
+            <p class="title">{{stroller.brand | translate}}</p>
+            <p>Mounth: {{stroller.mounth}}</p>
+            <p>Price:<span class="price">{{stroller.price}}</span>Euro per day</p>
+            <p>Key:{{stroller.key}}</p>
+            <a class="details-btn" routerLink="/stroller/{{stroller?.id}}">Details</a>
+          </div> 
+        </section>
+      </div> -->
+    <!-- </div> -->
+</section>
     

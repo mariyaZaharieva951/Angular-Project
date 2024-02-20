@@ -20,10 +20,10 @@ const routes: Routes = [
     path: 'cart',
     component: CartComponent
   },
-  {
-    path: 'search',
-    component: SearchComponent
-  }
+  // {
+  //   path: 'search',
+  //   component: SearchComponent
+  // }
   
 ];
 

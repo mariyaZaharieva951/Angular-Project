@@ -9,7 +9,7 @@ import { AngularFireDatabase, AngularFireList} from '@angular/fire/compat/databa
   providedIn: 'root'
 })
 export class StrollerServiceService {
-
+  private filteredStrollers: Stroller[] = [];
   private dbPathData = '/data';
   strollersRef: AngularFireList<Stroller> 
 
@@ -25,6 +25,14 @@ export class StrollerServiceService {
     const data = this.db.object(this.dbPathData + `/${id}`);
     return data;
    
+  }
+
+  setFilteredStrollers(strollers: Stroller[]): void {
+    this.filteredStrollers = strollers;
+  }
+
+  getFilteredStrollers(): Stroller[] {
+    return this.filteredStrollers;
   }
 
 

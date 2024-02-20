@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { CatalogComponent } from './catalog/catalog.component';
 import { StrollerComponent } from './stroller/stroller.component';
@@ -21,7 +22,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     StrollerComponent,
   ],
   imports: [
-    CommonModule, RouterModule, StollerRoutingModule, SharedModule, CoreModule,
+    CommonModule, RouterModule, StollerRoutingModule, SharedModule, CoreModule, FormsModule,
     TranslateModule.forChild({
       defaultLanguage: 'en', 
       loader: {

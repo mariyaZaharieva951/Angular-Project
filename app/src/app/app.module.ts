@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from '../environment/environment';
@@ -42,6 +42,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     SharedModule,
     StoreModule,
     RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
     TranslateModule.forRoot({
       defaultLanguage: 'en', // Език по подразбиране
       loader: {
@@ -49,8 +51,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    })
-    
+    })  
   ],
   providers: [],
   bootstrap: [AppComponent]

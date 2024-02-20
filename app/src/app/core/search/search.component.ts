@@ -18,22 +18,21 @@ export class SearchComponent {
   
 
   ngOnInit(): void {
-    this.retriveStrollers();
+
+    // this.strollerService.getStrollers().valueChanges().subscribe((strollers: Stroller[]) => {
+    //   this.strollersList = strollers;
+    //   this.fullStrollersList = this.strollersList;
+    //   console.log('SEARCH', this.fullStrollersList);
+    // });
 }
 
-retriveStrollers(): void {
-  this.strollerService.getStrollers().valueChanges().subscribe((data: Stroller[]) => {
-    this.strollersList = data;
-    this.fullStrollersList = this.strollersList;
-  });
-}
-
-search(text: string): void {
-  if(!text) {
-    this.filteredList = this.fullStrollersList;
-  } else {
-    this.filteredList = this.fullStrollersList.filter((query: Stroller) => query?.brand.toLowerCase().includes(text.toLowerCase()));
-  }
-  console.log(this.filteredList);
-}
+// search(text: string): void {
+//   if(!text) {
+//     this.filteredList = this.fullStrollersList;
+//   } else {
+//     this.filteredList = this.fullStrollersList.filter((query: Stroller) => query?.brand.toLowerCase().includes(text.toLowerCase()));
+//   }
+//   this.strollerService.setFilteredStrollers(this.filteredList);
+//   console.log('AFTER SEARCH', this.filteredList)
+// }
 }
