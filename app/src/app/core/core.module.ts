@@ -4,7 +4,6 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { CartBarComponent } from './cart-bar/cart-bar.component';
-import { SearchComponent } from './search/search.component';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -17,8 +16,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   declarations: [
     HeaderComponent,
     FooterComponent,
-    CartBarComponent,
-    SearchComponent
+    CartBarComponent
   ],
   imports: [
     CommonModule, RouterModule,
@@ -31,6 +29,6 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     })
   ],
-  exports: [HeaderComponent, FooterComponent, CartBarComponent, SearchComponent]
+  exports: [HeaderComponent, FooterComponent, CartBarComponent]
 })
 export class CoreModule { }
