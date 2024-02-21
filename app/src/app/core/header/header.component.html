@@ -22,9 +22,14 @@
       </div>
 
       <div *ngIf="isLoggedIn" class="user">
-        <a routerLink="/auth/profile/{{userId}}">{{'profile' | translate}}</a>
-        <a (click)="logout()">{{'logout' | translate}}</a>
-        <app-cart-bar></app-cart-bar> 
+        <div class="profile">
+          <a routerLink="/auth/profile/{{userId}}">{{'profile' | translate}}</a>
+          <a (click)="logout()">{{'logout' | translate}}</a>
+        </div>
+        <div class="card">
+          <app-cart-bar></app-cart-bar> 
+        </div>
+        
       </div>
     
       <div *ngIf="!isLoggedIn" class="guest">

@@ -9,8 +9,6 @@ header {
   }
   
   nav {
-    height: 0px;
-    margin-bottom: 46px;
     display: flex;
     
   }
@@ -32,3 +30,13 @@ header {
   nav a:hover {
     color: rgb(121, 13, 13);
   }
+
+  .user {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    padding: 0;
+    margin: 0;
+  }
+
+  
