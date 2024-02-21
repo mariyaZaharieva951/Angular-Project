@@ -36,9 +36,8 @@ export class CatalogComponent implements OnInit {
     } else {
       this.filteredList = this.strollersList.filter((query: Stroller) => query?.brand.toLowerCase().includes(this.searchText.toLowerCase()));
     }
+    this.strollerService.setFilteredStrollers(this.filteredList);
   }
-
-
 
 }
 

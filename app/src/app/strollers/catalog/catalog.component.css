@@ -105,3 +105,9 @@
     margin-top: 0.3rem;
     width: 1.55rem;
 }
+
+.notFound {
+  text-align: center;
+  margin-top: 5rem;
+  font-size: 24px;
+}

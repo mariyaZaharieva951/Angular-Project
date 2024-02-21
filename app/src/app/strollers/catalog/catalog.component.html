@@ -11,7 +11,7 @@
   </form>
 
     <app-loader *ngIf="!strollersList"></app-loader>
-
+        <div *ngIf="filteredList.length === 0" class="notFound">No results found</div>
         <section *ngFor="let stroller of filteredList" id="dashboard">
           <div class="product">
             <img src="{{stroller.image}}"/>
