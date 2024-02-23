@@ -30,7 +30,7 @@
         
 </section>
 <div class="pagination">
-  <button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
-  <span>Страница {{ currentPage }} от {{ totalPages }}</span>
-  <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+  <button (click)="prevPage()" [disabled]="currentPage === 1"><<<</button>
+  <span>{{ currentPage }} of {{ totalPages }}</span>
+  <button (click)="nextPage()" [disabled]="currentPage === totalPages">>>></button>
 </div>
