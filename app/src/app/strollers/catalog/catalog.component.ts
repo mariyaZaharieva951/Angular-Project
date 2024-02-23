@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StrollerServiceService } from '../stroller-service.service';
 import { Stroller } from 'src/app/interfaces/stroller';
-import { map } from 'rxjs/operators';
 
 
 
@@ -11,10 +10,16 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./catalog.component.css']
 })
 export class CatalogComponent implements OnInit {
+
   strollersList: Stroller[] | any;
   searchText: string;
   filteredList: Stroller[] = this.strollerService.getFilteredStrollers();
 
+  paginatedData: any[];
+  currentPage: number = 1;
+  itemsPerPage: number = 3;
+  totalPages?: number;
+   
   constructor(private strollerService: StrollerServiceService){
 
   }
@@ -23,10 +28,12 @@ export class CatalogComponent implements OnInit {
 
   this.strollerService.getStrollers().valueChanges().subscribe((strollers: Stroller[]) => {
   this.strollersList = strollers;
-  this.filteredList = [...this.strollersList];
 
+  this.filteredList = [...this.strollersList];
+  this.fetchData();
+    
 });
-     
+    
   };
 
 
@@ -37,8 +44,31 @@ export class CatalogComponent implements OnInit {
       this.filteredList = this.strollersList.filter((query: Stroller) => query?.brand.toLowerCase().includes(this.searchText.toLowerCase()));
     }
     this.strollerService.setFilteredStrollers(this.filteredList);
+    this.fetchData();
   }
 
+
+  fetchData(): void {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    this.paginatedData = this.filteredList.slice(startIndex, endIndex);
+    this.totalPages = Math.ceil(this.filteredList.length / this.itemsPerPage);
+  }
+
+
+  nextPage(): void {
+    if (this.currentPage < this.totalPages!) {
+      this.currentPage++;
+      this.fetchData();
+    }
+  }
+
+  prevPage(): void {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.fetchData();
+    }
+  }
 }
 
   

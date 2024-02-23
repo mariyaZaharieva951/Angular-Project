@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Stroller } from '../interfaces/stroller';
 import { AngularFireDatabase, AngularFireList} from '@angular/fire/compat/database';
-
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 
 
@@ -34,8 +35,6 @@ export class StrollerServiceService {
   getFilteredStrollers(): Stroller[] {
     return this.filteredStrollers;
   }
-
-
 
 
 }

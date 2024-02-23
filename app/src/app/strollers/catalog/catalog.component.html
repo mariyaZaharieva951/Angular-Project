@@ -11,8 +11,11 @@
   </form>
 
     <app-loader *ngIf="!strollersList"></app-loader>
-        <div *ngIf="filteredList.length === 0" class="notFound">No results found</div>
-        <section *ngFor="let stroller of filteredList" id="dashboard">
+        
+    <div *ngIf="filteredList.length === 0" class="notFound">
+      No results found
+    </div>
+        <section *ngFor="let stroller of paginatedData" id="dashboard">
           <div class="product">
             <img src="{{stroller.image}}"/>
             <p class="title">
@@ -23,5 +26,11 @@
             <a class="details-btn" routerLink="/stroller/{{stroller?.id}}">Details</a>
           </div> 
         </section>
+
+        
 </section>
-    
+<div class="pagination">
+  <button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+  <span>Страница {{ currentPage }} от {{ totalPages }}</span>
+  <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+</div>

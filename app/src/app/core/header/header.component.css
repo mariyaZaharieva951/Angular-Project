@@ -39,4 +39,6 @@ header {
     margin: 0;
   }
 
-  
+.form-control {
+  margin-top: 8px;
+}
