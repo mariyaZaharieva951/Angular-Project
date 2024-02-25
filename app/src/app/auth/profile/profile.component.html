@@ -6,17 +6,23 @@
         </div>
     </article>
     <div id="details-wrapper">
-        <div>
-            <h1>My rent strollers</h1>
-            <div *ngIf="haveRentStroller">
+
+        <h1>My rent strollers</h1>
+        <div class="myStrollers">
+            <div *ngIf="haveRentStroller" class="product">
                 <div *ngFor="let stroller of currentUser?.rent">
-                <img class="details-img" src="{{stroller.image}}">
-                <p>{{stroller.brand}}</p>
-            </div>
+                    <p class="brand">{{stroller.brand}}</p>
+                    <div class="img">
+                        <img class="details-img" src="{{stroller.image}}">
+                    </div>
+                    
+
+                </div>
             </div>
         </div>
+
         <div *ngIf="!haveRentStroller">
-        <p class="no-memes">You don`t have rent stroller.</p>
+            <p class="no-memes">You don`t have rent stroller.</p>
         </div>
     </div>
 </section>
