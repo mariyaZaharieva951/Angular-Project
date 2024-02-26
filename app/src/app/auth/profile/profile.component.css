@@ -51,23 +51,41 @@
 
   .img {
     width: 21vw;
-    height: 50vh; 
+    height: 36vh; 
   }
   
   #details-wrapper img {
     height:16vw;
   }
 
-  .myStrollers .product {
+  .myStrollers .products {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     /* margin-right: 10px; */
     vertical-align: top;
+    /* margin-top: 10px; */
+  }
+
+  .myStrollers .product {
     margin-top: 10px;
+    margin-bottom: 10px;
   }
 
   .brand {
     margin-top: 0;
     text-decoration: underline;
+  }
+
+  .delete-btn {
+    text-decoration: none;
+    font-size: 21px;
+    width: 160px;
+    border-radius: 3px;
+    text-align: center;
+    color: white;
+    background: rgb(231, 103, 124);
+    margin: 2px;
+    padding: 2px;
+    cursor: pointer;
   }

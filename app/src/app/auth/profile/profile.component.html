@@ -9,12 +9,13 @@
 
         <h1>My rent strollers</h1>
         <div class="myStrollers">
-            <div *ngIf="haveRentStroller" class="product">
-                <div *ngFor="let stroller of currentUser?.rent">
+            <div *ngIf="haveRentStroller" class="products">
+                <div *ngFor="let stroller of currentUser?.rent" class="product">
                     <p class="brand">{{stroller.brand}}</p>
                     <div class="img">
                         <img class="details-img" src="{{stroller.image}}">
                     </div>
+                    <a class="delete-btn">Delete</a>
                     
 
                 </div>
