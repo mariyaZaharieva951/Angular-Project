@@ -1,6 +1,6 @@
 .user-profile {
     background: rgb(248, 231, 234);
-    max-width: 940px;
+    max-width: 980px;
     margin: auto;
     margin-top: 50px;
     margin-bottom: 50px;
@@ -51,7 +51,7 @@
 
   .img {
     width: 21vw;
-    height: 52vh; 
+    height: 50vh; 
   }
   
   #details-wrapper img {
@@ -61,8 +61,8 @@
   .myStrollers .product {
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
-    margin-right: 10px;
+    flex-wrap: wrap;
+    /* margin-right: 10px; */
     vertical-align: top;
     margin-top: 10px;
   }
