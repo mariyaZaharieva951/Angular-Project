@@ -57,11 +57,7 @@ export class AuthServiceService  {
      
     }
 
-  setUserData(
-    
-    uid: any,
-    email: any
-  ): void { 
+  setUserData(uid: any,email: any): void { 
     debugger
     const userData: User = {
       email,

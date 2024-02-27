@@ -28,6 +28,10 @@ export class StrollerServiceService {
    
   }
 
+  deleteStroller(id:string) {
+    
+  }
+
   setFilteredStrollers(strollers: Stroller[]): void {
     this.filteredStrollers = strollers;
   }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthServiceService } from '../auth-service.service';
 import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/interfaces/user';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
 
 
 
@@ -14,7 +15,7 @@ export class ProfileComponent implements OnInit{
   currentUser: User | any;
   haveRentStroller: boolean = false;
 
-  constructor(private authService: AuthServiceService, public activatedRoute: ActivatedRoute) {}
+  constructor(public afdb: AngularFireDatabase,private authService: AuthServiceService, public activatedRoute: ActivatedRoute) {}
 
 
   ngOnInit(): void {
@@ -41,4 +42,18 @@ export class ProfileComponent implements OnInit{
       })
   }
 
+  onDelete(id:string): void {
+    
+    const userId = this.activatedRoute.snapshot.params['userId'];
+    const index = this.currentUser.rent.findIndex((stroller: any) => stroller.id === id);
+    
+    if(index !== -1) {
+      this.currentUser.rent.splice(index,1);
+      this.afdb.database.ref('users/' + userId).set(this.currentUser);
+      console.log('You successfully delete this stroller');
+      
+    } else {
+      alert('Error')
+    }
+  }
 }
