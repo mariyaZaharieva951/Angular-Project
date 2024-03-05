@@ -42,3 +42,9 @@ header {
 .form-control {
   margin-top: 8px;
 }
+
+@media screen and (min-width:450px) and (max-width:930px) {
+ header {
+  padding: 0.2em 0;
+ }
+}

@@ -26,3 +26,19 @@
     text-align: center;
   }
 
+  @media screen and (min-width:450px) and (max-width:1920px) {
+    #home img {
+      display: block;
+      margin: auto;
+      min-height: 78%;
+      min-width: 78%;
+    }
+
+    #home h2,
+    #home h3 {
+    margin: 32px;
+  }
+
+
+  }
+
