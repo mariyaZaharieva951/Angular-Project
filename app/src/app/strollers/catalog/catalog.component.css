@@ -122,3 +122,35 @@
   border: none;
   color: rgb(231, 103, 124);
 }
+
+@media screen and (min-width:450px) and (max-width:830px) {
+  #dashboard {
+    display: flex;
+  }
+  
+  .product {
+    width: 42vw;
+    height: 42vh;
+  }
+
+  .product img {
+    height:36vw;
+  }
+}
+
+@media screen and (min-width:830px) and (max-width:1385px) {
+  
+  #dashboard {
+    display: inline-block;
+    margin: 10px;
+  }
+  
+  .product {
+    width: 28vw;
+    height: 42vh;
+  }
+
+  .product img {
+    height:22vw;
+  }
+}
