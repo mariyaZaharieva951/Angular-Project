@@ -5,8 +5,8 @@
   #home img {
     display: block;
     margin: auto;
-    height: 48%;
-    width: 48%;
+    height: auto;
+    width: 50%;
     background-color: transparent;
   }
   
@@ -16,7 +16,7 @@
     font-size: 23px;
     color: rgb(240, 14, 52);;
     text-align: center;
-    margin: 12px;
+    margin: 5px;
   }
 
   #home h3 a{
@@ -26,12 +26,12 @@
     text-align: center;
   }
 
-  @media screen and (min-width:450px) and (max-width:1920px) {
+  @media screen and (min-width:450px) and (max-width:1200px) {
     #home img {
       display: block;
       margin: auto;
-      min-height: 78%;
-      min-width: 78%;
+      min-height: 74%;
+      min-width: 52%;
     }
 
     #home h2,
