@@ -11,8 +11,9 @@
         <div class="myStrollers">
             <div *ngIf="haveRentStroller" class="products">
                 <div *ngFor="let stroller of currentUser?.rent" class="product">
-                    <p class="brand" routerLink="/stroller/{{stroller?.rent.id}}">{{stroller.brand}}  </p>
-                    <div class="img">
+                    
+                    <p class="brand" [routerLink]="['/stroller', stroller.id]">{{stroller.brand}}  </p>
+                    <div class="img" [routerLink]="['/stroller', stroller.id]">
                         <img class="details-img" src="{{stroller.image}}">
                     </div>
                     <a class="delete-btn" (click)="onDelete(stroller.id)">Delete</a>

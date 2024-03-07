@@ -23,7 +23,7 @@ export class StrollerServiceService {
   }
 
   getStroller(id:string) {
-    const data = this.db.object(this.dbPathData + `/${id}`);
+    const data = this.db.object(this.dbPathData + `/${Number(id)-1}`);
     return data;
    
   }

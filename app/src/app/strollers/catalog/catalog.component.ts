@@ -48,7 +48,6 @@ export class CatalogComponent implements OnInit {
 
 
   fetchData(): void {
-    debugger
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
     const endIndex = startIndex + this.itemsPerPage;
     this.paginatedData = this.filteredList.slice(startIndex, endIndex);
