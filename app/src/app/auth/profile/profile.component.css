@@ -73,6 +73,7 @@
   .brand {
     margin: 0;
     text-decoration: underline;
+    cursor: pointer;
   }
 
   .delete-btn {

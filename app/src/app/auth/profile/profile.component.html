@@ -11,7 +11,7 @@
         <div class="myStrollers">
             <div *ngIf="haveRentStroller" class="products">
                 <div *ngFor="let stroller of currentUser?.rent" class="product">
-                    <p class="brand">{{stroller.brand}}</p>
+                    <p class="brand" routerLink="/stroller/{{stroller?.rent.id}}">{{stroller.brand}}  </p>
                     <div class="img">
                         <img class="details-img" src="{{stroller.image}}">
                     </div>
