@@ -1,8 +1,14 @@
+.shoppingCart {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+
 #details-wrapper {
   background-color: white;
-  margin: 50px auto;
-  height: 71%;
-  width: 60%;
+  margin: 0 auto;
+  height: 35%;
+  width: 25%;
   border: 2px ridge rgb(210, 208, 208);
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 3px 3px 0 rgba(0, 0, 0, 0.24);
 }
@@ -13,9 +19,9 @@
 
 #details-wrapper img {
   display: block;
-  margin: 10px auto;
-  height: 40vh;
-  width: 40vh;
+  margin: 5px auto;
+  height: 20vh;
+  width: 20vh;
 }
 
 #details-title {
@@ -79,13 +85,14 @@ span {
 
 .rent-btn {
   text-decoration: none;
-  font-size: 23px;
+  font-size: 20px;
   width: 160px;
   border-radius: 3px;
   text-align: center;
   color: white;
   background: rgb(231, 103, 124);
   margin: 2px;
+  padding: 0 3px;
 }
 
 @media screen and (min-width:450px) and (max-width:1156px) {

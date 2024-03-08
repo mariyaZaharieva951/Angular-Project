@@ -15,7 +15,7 @@
     <div *ngIf="filteredList.length === 0" class="notFound">
       No results found
     </div>
-    
+      <div class="catalog">
         <section *ngFor="let stroller of paginatedData" id="dashboard">
           <div class="product">
             <img src="{{stroller.image}}"/>
@@ -27,6 +27,7 @@
             <a class="details-btn" routerLink="/stroller/{{stroller?.id}}">Details</a>
           </div> 
         </section>
+      </div>
 
         
 </section>

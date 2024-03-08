@@ -3,8 +3,12 @@
     display: inline-block;
     align-items: center;
     justify-content:center;
-    margin: 76px;
+    margin: 70px;
   
+  }
+  .catalog {
+    display: flex;
+    justify-content: center;
   }
    h2 {
     text-align: center;
