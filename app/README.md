@@ -28,11 +28,11 @@ Repeat password and password must be matched
 All fields must be requered  
 ![alt text](register.png)
 
-*login page*  
+*Login page*  
 If user has a registration, can click on login and will be 
-redirected to the Login page. The login form expects as input: email and password. Valid credentials in this case are:
-The valid Email address must be example@example.example.
-Password should be at least 6 symbols as well.
+redirected to the Login page. The login form expects as input: email and password. Valid credentials in this case are:  
+The valid Email address must be example@example.example.  
+Password should be at least 6 symbols as well.  
 ![alt text](login.png)
  
 Private part is visible, after successful register and login.
