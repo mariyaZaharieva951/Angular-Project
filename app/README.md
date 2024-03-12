@@ -14,7 +14,7 @@ Home page for all users. Under the banner there is a link to catalog page for al
 
 The application have public part and private part. 
 The public part is visible without authentication, these are catalog of baby strollers, login and register pages.
-![alt text](nav2-1.png)
+![alt text](nav2.png)
 
 Catalog page
 All users can see this page, there are all strollers that can be rented.
